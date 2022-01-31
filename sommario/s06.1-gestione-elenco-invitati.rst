@@ -1,0 +1,341 @@
+S06.1 Gestione elenco invitati
+==============================
+
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **S06. |        |        |        |        |        |        |        |
+| 1      |        |        |        |        |        |        |        |
+| –      |        |        |        |        |        |        |        |
+| Gestio |        |        |        |        |        |        |        |
+| ne     |        |        |        |        |        |        |        |
+| elenco |        |        |        |        |        |        |        |
+| invita |        |        |        |        |        |        |        |
+| ti**\  |        |        |        |        |        |        |        |
+|  [2]_  |        |        |        |        |        |        |        |
++========+========+========+========+========+========+========+========+
+| COD    | **ETIC | **TIPO | **FORM | **CONT | **MESS |        |        |
+|        | HETTA* | **     | ATO**  | ROLLO* | AGGIO* |        |        |
+|        | *      |        |        | *      | *      |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+|        |        |        |        | DESCRI | TIPO   |        |        |
+|        |        |        |        | ZIONE  |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **01** | Numero | E      | NUMERI |        |        |        |        |
+|        | gara   |        | CO     |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **02** | Oggett | E      | STRING |        |        |        |        |
+|        | o      |        | A      |        |        |        |        |
+|        | della  |        |        |        |        |        |        |
+|        | Gara   |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **03** | Import | E      | IMPORT |        |        |        |        |
+|        | o      |        | O      |        |        |        |        |
+|        | della  |        |        |        |        |        |        |
+|        | Gara € |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **04** | Numero | E      | NUMERI |        |        |        |        |
+|        | totale |        | CO     |        |        |        |        |
+|        | dei    |        |        |        |        |        |        |
+|        | Lotti  |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **05** | Stato  | E      | STRING |        |        |        |        |
+|        | gara   |        | A      |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **ELEN |        |        |        |        |        |        |        |
+| CO     |        |        |        |        |        |        |        |
+| INVITA |        |        |        |        |        |        |        |
+| TI**   |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| 06     | PER    | Dati   |        | `DATI_ |        |        |        |
+|        | OGNI   | invita |        | PERSON |        |        |        |
+|        | INVITA | to     |        | A_GIUR |        |        |        |
+|        | TO     |        |        | IDICA  |        |        |        |
+|        |        |        |        | <#dati |        |        |        |
+|        |        |        |        | _perso |        |        |        |
+|        |        |        |        | na_giu |        |        |        |
+|        |        |        |        | ridica |        |        |        |
+|        |        |        |        | >`__   |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+|        |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+
+11. .. rubric::  E02 - Fase di aggiudicazione o definizione di procedura
+       negoziata (rif. 4)
+       :name: e02---fase-di-aggiudicazione-o-definizione-di-procedura-negoziata-rif.-4
+
+    8. .. rubric:: S07 – Dati comuni
+          :name: s07-dati-comuni
+
++---------+---------+---------+---------+---------+---------+---------+
+| S07 –   |         |         |         |         |         |         |
+| Dati    |         |         |         |         |         |         |
+| comuni  |         |         |         |         |         |         |
++=========+=========+=========+=========+=========+=========+=========+
+| COD     | ETICHET | TIPO    | FORMATO | CONTROL | MESSAGG |         |
+|         | TA      |         |         | LO      | IO      |         |
++---------+---------+---------+---------+---------+---------+---------+
+|         |         |         |         | DESCRIZ | TIPO    |         |
+|         |         |         |         | IONE    |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 01      | Codice  | E       | STRINGA |         |         |         |
+|         | di      |         |         |         |         |         |
+|         | individ |         |         |         |         |         |
+|         | uazione |         |         |         |         |         |
+|         | dell'ap |         |         |         |         |         |
+|         | palto   |         |         |         |         |         |
+|         | (CIG)   |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 02      | Importo | E       | IMPORTO |         |         |         |
+|         | lotto   |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 03      | Tipo    | P       | `SETTOR | lista   |         |         |
+|         | Settore |         | E_CONTR | di      |         |         |
+|         |         |         | ATTO <# | valori  |         |         |
+|         |         |         | settore | da      |         |         |
+|         |         |         | _contra | elenco  |         |         |
+|         |         |         | tto>`__ |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 04      | Oggetto | P       | `OGGETT | lista   |         |         |
+|         | princip |         | O_CONTR | di      |         |         |
+|         | ale     |         | ATTO <# | valori  |         |         |
+|         | del     |         | oggetto | da      |         |         |
+|         | contrat |         | _contra | elenco  |         |         |
+|         | to      |         | tto>`__ |         |         |         |
+|         | ai      |         |         |         |         |         |
+|         | sensi   |         |         |         |         |         |
+|         | dell'ar |         |         |         |         |         |
+|         | t.      |         |         |         |         |         |
+|         | 14 del  |         |         |         |         |         |
+|         | Dlgs.   |         |         |         |         |         |
+|         | 163/06  |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 05      | Modalit | p       | `MODALI | lista   |         |         |
+|         | à       |         | TA_REAL | di      |         |         |
+|         | di      |         | IZZAZIO | valori  |         |         |
+|         | realizz |         | NE <#mo | da      |         |         |
+|         | azione  |         | dalita_ | elenco  |         |         |
+|         |         |         | realizz |         |         |         |
+|         |         |         | azione> |         |         |         |
+|         |         |         | `__     |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 06      | Contrat | p       | FLAG    | Valore: |         |         |
+|         | to      |         |         | SI/NO   |         |         |
+|         | escluso |         |         |         |         |         |
+|         | in      |         |         | Valore  |         |         |
+|         | tutto o |         |         | di      |         |         |
+|         | in      |         |         | default |         |         |
+|         | parte   |         |         | :       |         |         |
+|         | dall'am |         |         | NO      |         |         |
+|         | bito    |         |         |         |         |         |
+|         | di      |         |         |         |         |         |
+|         | applica |         |         |         |         |         |
+|         | zione   |         |         |         |         |         |
+|         | del     |         |         |         |         |         |
+|         | codice  |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 07      | Esclusi | P       | `ART_ES | lista   |         |         |
+|         | one     |         | CLUSION | di      |         |         |
+|         | ai      |         | E <#art | valori  |         |         |
+|         | sensi   |         | _esclus | da      |         |         |
+|         | dell’ar |         | ione>`_ | elenco  |         |         |
+|         | ticolo  |         | _       |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| **STAZI |         |         |         |         |         |         |
+| ONE     |         |         |         |         |         |         |
+| APPALTA |         |         |         |         |         |         |
+| NTE**   |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 08      | Codice  | E       | STRINGA |         |         |         |
+|         | Fiscale |         |         |         |         |         |
+|         | della   |         |         |         |         |         |
+|         | Stazion |         |         |         |         |         |
+|         | e       |         |         |         |         |         |
+|         | Appalta |         |         |         |         |         |
+|         | nte     |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 09      | Denomin | E       | STRINGA |         |         |         |
+|         | azione  |         |         |         |         |         |
+|         | della   |         |         |         |         |         |
+|         | Stazion |         |         |         |         |         |
+|         | e       |         |         |         |         |         |
+|         | Appalta |         |         |         |         |         |
+|         | nte     |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 10      | Codice  | E       | STRINGA |         |         |         |
+|         | univoco |         |         |         |         |         |
+|         | centro  |         |         |         |         |         |
+|         | di      |         |         |         |         |         |
+|         | costo   |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 11      | Denomin | E       | STRINGA |         |         |         |
+|         | azione  |         |         |         |         |         |
+|         | del     |         |         |         |         |         |
+|         | centro  |         |         |         |         |         |
+|         | di      |         |         |         |         |         |
+|         | costo   |         |         |         |         |         |
+|         | nell'am |         |         |         |         |         |
+|         | bito    |         |         |         |         |         |
+|         | della   |         |         |         |         |         |
+|         | Stazion |         |         |         |         |         |
+|         | e       |         |         |         |         |         |
+|         | Appalta |         |         |         |         |         |
+|         | nte     |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 12      | La      | O       | FLAG    | Valore: | B       | Selezio |
+|         | stazion |         |         | SI/NO   |         | nare    |
+|         | e       |         |         |         |         | almeno  |
+|         | appalta |         |         | Valore  |         | un      |
+|         | nte     |         |         | di      |         | opzione |
+|         | agisce  |         |         | default |         | per     |
+|         | per     |         |         | :       |         | tutti i |
+|         | conto   |         |         | NO      |         | campi   |
+|         | di      |         |         |         |         | Si/No   |
+|         | altro   |         |         | Se non  |         |         |
+|         | soggett |         |         | selezio |         |         |
+|         | o?      |         |         | nato    |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 13      | Tipolog | OIF     | `TIPOLO | Lista   | B       | “Selezi |
+|         | ia      |         | GIA_SA  | di      |         | onare   |
+|         | della   |         | <#tipol | valori  |         | un      |
+|         | SA (nel |         | ogia_pr | da      |         | valore  |
+|         | caso    |         | ocedura | elenco  |         | tra     |
+|         | agisca  |         | >`__    |         |         | quelli  |
+|         | per     |         |         | Campo   |         | previst |
+|         | conto   |         |         | obbliga |         | i”      |
+|         | di      |         |         | torio   |         |         |
+|         | altro/i |         |         | solo se |         |         |
+|         | soggett |         |         | il      |         |         |
+|         | o/i)    |         |         | campo   |         |         |
+|         |         |         |         | S07.12  |         |         |
+|         |         |         |         | viene   |         |         |
+|         |         |         |         | valoriz |         |         |
+|         |         |         |         | zato    |         |         |
+|         |         |         |         | a “SI”  |         |         |
+|         |         |         |         | .       |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 14      | Tipolog | OIF     | `TIPOLO | Lista   | B       | “Selezi |
+|         | ia      |         | GIA     | di      |         | onare   |
+|         | procedu |         | PROCEDU | valori  |         | un      |
+|         | ra      |         | RA <#ti | da      |         | valore  |
+|         | (nel    |         | pologia | elenco  |         | tra     |
+|         | caso    |         | _proced |         |         | quelli  |
+|         | agisca  |         | ura>`__ | Campo   |         | previst |
+|         | per     |         |         | obbliga |         | i”      |
+|         | conto   |         |         | torio   |         |         |
+|         | di      |         |         | solo se |         |         |
+|         | altro/i |         |         | il      |         |         |
+|         | soggett |         |         | campo   |         |         |
+|         | o/i)    |         |         | S07.12  |         |         |
+|         |         |         |         | viene   |         |         |
+|         |         |         |         | valoriz |         |         |
+|         |         |         |         | zato    |         |         |
+|         |         |         |         | a “SI”  |         |         |
+|         |         |         |         | .       |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 15      | Durata  | OIF     | NUMERIC | Se      | B       | Formato |
+|         | della   |         | O       | valoriz |         | del     |
+|         | convenz |         |         | zato    | B       | campo   |
+|         | ione    |         |         | deve    |         | non     |
+|         | o       |         |         | essere  |         | valido  |
+|         | accordo |         |         | numeric |         |         |
+|         | quadro  |         |         | o       |         | Indicar |
+|         | in      |         |         |         |         | e       |
+|         | giorni  |         |         | Se non  |         | la      |
+|         |         |         |         | valoriz |         | durata  |
+|         |         |         |         | zato    |         | della   |
+|         |         |         |         | e il    |         | convenz |
+|         |         |         |         | campo   |         | ione    |
+|         |         |         |         | S07.05  |         | o       |
+|         |         |         |         | vale    |         | accordo |
+|         |         |         |         | “Accord |         | quadro  |
+|         |         |         |         | o       |         | in      |
+|         |         |         |         | quadro” |         | giorni  |
+|         |         |         |         | o       |         |         |
+|         |         |         |         | “Conven |         |         |
+|         |         |         |         | zione”  |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 16      | La      | OIF     | FLAG    | Valore: | B       | Selezio |
+|         | central |         |         | SI/NO   |         | nare    |
+|         | e       |         |         | Valore  | B       | almeno  |
+|         | di      |         |         | di      |         | un      |
+|         | committ |         |         | default |         | opzione |
+|         | enza    |         |         | :       |         | per     |
+|         | procede |         |         | NO Deve |         | tutti i |
+|         | alla    |         |         | essere  |         | campi   |
+|         | stipula |         |         | valoriz |         | Si/No   |
+|         | ?       |         |         | zato    |         |         |
+|         |         |         |         | se il   |         | “Selezi |
+|         |         |         |         | campo   |         | onare   |
+|         |         |         |         | S07.12  |         | un      |
+|         |         |         |         | è stato |         | valore  |
+|         |         |         |         | valoriz |         | tra     |
+|         |         |         |         | zato    |         | quelli  |
+|         |         |         |         | a Si    |         | previst |
+|         |         |         |         |         |         | i”      |
++---------+---------+---------+---------+---------+---------+---------+
+| 17      | Codice  | OIF     | STRINGA | Campo   | B       | “Attenz |
+|         | fiscale |         |         | obbliga |         | ione,   |
+|         | soggett |         |         | torio   |         | non è   |
+|         | o       |         |         | solo se |         | stato   |
+|         | per     |         |         | il      |         | indicat |
+|         | conto   |         |         | campo   |         | o       |
+|         | del     |         |         | S07.12  |         | il      |
+|         | quale   |         |         | viene   |         | codice  |
+|         | agisce  |         |         | valoriz |         | fiscale |
+|         | la S.A. |         |         | zato    |         | del     |
+|         | (in     |         |         | a “SI”  |         | soggett |
+|         | caso di |         |         | e se il |         | o”      |
+|         | singolo |         |         | campo   |         |         |
+|         | soggett |         |         | S07.13  |         |         |
+|         | o)      |         |         | è       |         |         |
+|         |         |         |         | diverso |         |         |
+|         |         |         |         | da      |         |         |
+|         |         |         |         | blank   |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 18      | Denomin | OIF     | STRINGA | Campo   | B       | “Attenz |
+|         | azione  |         |         | obbliga |         | ione,   |
+|         | dell'Am |         |         | torio   |         | non è   |
+|         | ministr |         |         | solo se |         | stata   |
+|         | azione  |         |         | il      |         | indicat |
+|         | per la  |         |         | campo   |         | a       |
+|         | quale   |         |         | S07.12  |         | la      |
+|         | agisce  |         |         | viene   |         | denomin |
+|         | la S.A. |         |         | valoriz |         | azione  |
+|         | (eventu |         |         | zato    |         | del     |
+|         | ale)    |         |         | a “SI”  |         | soggett |
+|         |         |         |         | e se il |         | o”      |
+|         |         |         |         | campo   |         |         |
+|         |         |         |         | S07.13  |         |         |
+|         |         |         |         | è       |         |         |
+|         |         |         |         | diverso |         |         |
+|         |         |         |         | da      |         |         |
+|         |         |         |         | blank   |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| **STATO |         |         |         |         |         |         |
+| ATTUALE |         |         |         |         |         |         |
+| **      |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 19      | Esito   | O       | `ESITO_ | Lista   | B       | “Selezi |
+|         | della   |         | PROCEDU | di      |         | onare   |
+|         | procedu |         | RA <#es | valori  |         | un      |
+|         | ra      |         | ito_pro | da      |         | valore  |
+|         |         |         | cedura> | elenco  |         | tra     |
+|         |         |         | `__     |         |         | quelli  |
+|         |         |         |         |         |         | previst |
+|         |         |         |         |         |         | i”      |
++---------+---------+---------+---------+---------+---------+---------+
+
+.. [1]
+   La scheda viene compilata quando si richiama la funzione ‘Gestisci
+   elenco invitati’ attivabile in “Dettaglio gara”.
+
+   Tale funzione è disponibile esclusivamente per le gare con scelta
+   contraente ‘Procedura negoziata senza previa pubblicazione’ e del
+   tipo “Procedura negoziata ex art. 204 comma 1 D.Lsg. 163/2006”.
+
+.. [2]
+   La scheda viene compilata quando si richiama la funzione ‘Gestisci
+   elenco invitati’ attivabile in “Dettaglio gara”.
+
+   Tale funzione è disponibile esclusivamente per le gare con scelta
+   contraente ‘Procedura negoziata senza previa pubblicazione’ e del
+   tipo “Procedura negoziata ex art. 204 comma 1 D.Lsg. 163/2006”.

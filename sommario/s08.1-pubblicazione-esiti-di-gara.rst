@@ -1,0 +1,218 @@
+S08.1 – Pubblicazione Esiti di Gara
+===================================
+
++---------+---------+---------+---------+---------+---------+---------+
+| **S08.1 |         |         |         |         |         |         |
+| –       |         |         |         |         |         |         |
+| Pubblic |         |         |         |         |         |         |
+| azione  |         |         |         |         |         |         |
+| Esiti   |         |         |         |         |         |         |
+| di      |         |         |         |         |         |         |
+| Gara**  |         |         |         |         |         |         |
++=========+=========+=========+=========+=========+=========+=========+
+| COD     | ETICHET | TIPO    | FORMATO | CONTROL | MESSAGG |         |
+|         | TA      |         |         | LO      | IO      |         |
++---------+---------+---------+---------+---------+---------+---------+
+|         |         |         |         | DESCRIZ | TIPO    |         |
+|         |         |         |         | IONE    |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 01      | Numero  | E       | NUMERIC |         |         |         |
+|         | gara    |         | O       |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| **PUBBL |         |         |         |         |         |         |
+| ICITA’  |         |         |         |         |         |         |
+| DELL’AP |         |         |         |         |         |         |
+| PALTO** |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 02      | Data    |         | DATA    | Se non  | B       | Data    |
+|         | Gazzett |         |         | è una   |         | formalm |
+|         | a       |         |         | data    | W       | ente    |
+|         | Ufficia |         |         |         |         | non     |
+|         | le      |         |         | Se      |         | corrett |
+|         | Comunit |         |         | campo   |         | a       |
+|         | à       |         |         | S01.10  |         |         |
+|         | Europea |         |         | >=      |         | Non è   |
+|         | - GUCE  |         |         | Soglia  |         | stata   |
+|         |         |         |         | rilevan |         | indicat |
+|         |         |         |         | za      |         | a       |
+|         |         |         |         | comunit |         | la data |
+|         |         |         |         | aria    |         | di      |
+|         |         |         |         | Lavori  |         | pubblic |
+|         |         |         |         |         |         | azione  |
+|         |         |         |         |         |         | GUCE    |
++---------+---------+---------+---------+---------+---------+---------+
+| 03      | Numero  | OIF     | STRINGA | Se non  | B       | Obbliga |
+|         | Gazzett |         |         | valoriz |         | torio   |
+|         | a       |         |         | zato    |         | se Data |
+|         | Ufficia |         |         | e       |         | GUCE è  |
+|         | le      |         |         | S08.1.0 |         | valoriz |
+|         | Comunit |         |         | 2       |         | zato    |
+|         | à       |         |         | è       |         |         |
+|         | Europea |         |         | valoriz |         |         |
+|         | - GUCE  |         |         | zato    |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 04      | Data    |         | DATA    | Se non  | B       | Data    |
+|         | Gazzett |         |         | è una   |         | formalm |
+|         | a       |         |         | data    | W       | ente    |
+|         | Ufficia |         |         |         |         | non     |
+|         | le      |         |         | Se      |         | corrett |
+|         | Regiona |         |         | campo   |         | a       |
+|         | le      |         |         | S01.10  |         |         |
+|         | o       |         |         | >=      |         | Non è   |
+|         | Bollett |         |         | Soglia  |         | stata   |
+|         | ino     |         |         | rilevan |         | indicat |
+|         | Regiona |         |         | za      |         | a       |
+|         | le      |         |         | comunit |         | la data |
+|         |         |         |         | aria    |         | di      |
+|         |         |         |         | Lavori  |         | pubblic |
+|         |         |         |         |         |         | azione  |
+|         |         |         |         |         |         | GUCE    |
++---------+---------+---------+---------+---------+---------+---------+
+| 05      | Numero  |         | STRINGA | Se non  | B       | Obbliga |
+|         | Gazzett |         |         | valoriz |         | torio   |
+|         | a       |         |         | zato    |         | se Data |
+|         | Ufficia |         |         | e       |         | BORE è  |
+|         | le      |         |         | S08.1.0 |         | valoriz |
+|         | Regiona |         |         | 4       |         | zato    |
+|         | le      |         |         | è       |         |         |
+|         | o       |         |         | valoriz |         |         |
+|         | Bollett |         |         | zato    |         |         |
+|         | ino     |         |         |         |         |         |
+|         | Regiona |         |         |         |         |         |
+|         | le      |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 06      | Data    |         | DATA    | Se non  | B       | Data    |
+|         | Gazzett |         |         | è una   |         | formalm |
+|         | a       |         |         | data    | W       | ente    |
+|         | Ufficia |         |         |         |         | non     |
+|         | le      |         |         | Se      |         | corrett |
+|         | Repubbl |         |         | campo   |         | a       |
+|         | ica     |         |         | S01.10  |         |         |
+|         | Italian |         |         | >=      |         | Non è   |
+|         | a       |         |         | Soglia  |         | stata   |
+|         | - GURI  |         |         | rilevan |         | indicat |
+|         |         |         |         | za      |         | a       |
+|         |         |         |         | comunit |         | la data |
+|         |         |         |         | aria    |         | di      |
+|         |         |         |         | Lavori  |         | pubblic |
+|         |         |         |         |         |         | azione  |
+|         |         |         |         |         |         | GURI    |
++---------+---------+---------+---------+---------+---------+---------+
+| 07      | Numero  |         | STRINGA | Se non  | B       | Obbliga |
+|         | Gazzett |         |         | valoriz |         | torio   |
+|         | a       |         |         | zato    |         | se Data |
+|         | Ufficia |         |         | e       |         | GURI è  |
+|         | le      |         |         | S08.1.0 |         | valoriz |
+|         | Repubbl |         |         | 6       |         | zato    |
+|         | ica     |         |         | è       |         |         |
+|         | Italian |         |         | valoriz |         |         |
+|         | a       |         |         | zato    |         |         |
+|         | - GURI  |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 08      | Data    |         | DATA    | Se non  | B       | Data    |
+|         | Albo    |         |         | è una   |         | formalm |
+|         | pretori |         |         | data    |         | ente    |
+|         | o       |         |         |         |         | non     |
+|         | del     |         |         |         |         | corrett |
+|         | Comune  |         |         |         |         | a       |
+|         | ove si  |         |         |         |         |         |
+|         | eseguon |         |         |         |         |         |
+|         | o       |         |         |         |         |         |
+|         | i       |         |         |         |         |         |
+|         | lavori  |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 09      | Quotidi |         | NUMERIC | Se non  | B       | Il      |
+|         | ani     |         | O       | è un    |         | campo   |
+|         | naziona |         |         | numero  | W       | contien |
+|         | li      |         |         |         |         | e       |
+|         |         |         |         | Se < 2  |         | caratte |
+|         |         |         |         | e campo |         | ri      |
+|         |         |         |         | S01.10  |         | non     |
+|         |         |         |         | >=      |         | validi  |
+|         |         |         |         | Soglia  |         |         |
+|         |         |         |         | rilevan |         | numero  |
+|         |         |         |         | za      |         | quotidi |
+|         |         |         |         | comunit |         | ani     |
+|         |         |         |         | aria    |         | naziona |
+|         |         |         |         | Lavori  |         | li      |
+|         |         |         |         |         |         | non     |
+|         |         |         |         |         |         | valido  |
++---------+---------+---------+---------+---------+---------+---------+
+| 10      | Quotidi |         | NUMERIC | Se non  | W       | Il      |
+|         | ani     |         | O       | è un    |         | campo   |
+|         | locali  |         |         | numero  |         | contien |
+|         |         |         |         |         |         | e       |
+|         |         |         |         | Se < 2  |         | caratte |
+|         |         |         |         | e campo |         | ri      |
+|         |         |         |         | S01.10  |         | non     |
+|         |         |         |         | >=      |         | validi  |
+|         |         |         |         | Soglia  |         |         |
+|         |         |         |         | rilevan |         | numero  |
+|         |         |         |         | za      |         | quotidi |
+|         |         |         |         | comunit |         | ani     |
+|         |         |         |         | aria    |         | locali  |
+|         |         |         |         | Lavori  |         | non     |
+|         |         |         |         |         |         | valido  |
++---------+---------+---------+---------+---------+---------+---------+
+| 11      | Periodi |         | NUMERIC | Se non  |         | Il      |
+|         | ci      |         | O       | è un    |         | campo   |
+|         |         |         |         | numero  |         | contien |
+|         |         |         |         |         |         | e       |
+|         |         |         |         |         |         | caratte |
+|         |         |         |         |         |         | ri      |
+|         |         |         |         |         |         | non     |
+|         |         |         |         |         |         | validi  |
++---------+---------+---------+---------+---------+---------+---------+
+| 12      | Sito    | O       | FLAG    | Valore: | B       | Non è   |
+|         | Informa |         |         | SI/NO   |         | stata   |
+|         | tico    |         |         |         |         | effettu |
+|         | Ministe |         |         | Default |         | ata     |
+|         | ro      |         |         | :       |         | la      |
+|         | Infrast |         |         | BLANK   |         | pubblic |
+|         | rutture |         |         |         |         | azione  |
+|         |         |         |         | Se vale |         | sul     |
+|         |         |         |         | ‘no’ e  |         | sito    |
+|         |         |         |         | campo   |         | informa |
+|         |         |         |         | S01.10  |         | tico    |
+|         |         |         |         | >=      |         | del     |
+|         |         |         |         | Soglia  |         | Ministe |
+|         |         |         |         | rilevan |         | ro      |
+|         |         |         |         | za      |         | delle   |
+|         |         |         |         | comunit |         | Infrast |
+|         |         |         |         | aria    |         | rutture |
+|         |         |         |         | Lavori  |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 13      | Link    |         | STRINGA |         |         |         |
+|         | Sito    |         |         |         |         |         |
+|         | Committ |         |         |         |         |         |
+|         | ente    |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| **ALLEG |         |         |         |         |         |         |
+| ATI**   |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| 15      | Esito   | OIF     | FILE    | Se non  | B       | previst |
+|         | di gara |         |         | valoriz |         | o       |
+|         |         |         |         | zato    |         | l'inser |
+|         |         |         |         | e se    |         | imento  |
+|         |         |         |         | campo   |         | dell'al |
+|         |         |         |         | S01.10  |         | legato  |
+|         |         |         |         | >= €    |         |         |
+|         |         |         |         | 500.000 |         |         |
+|         |         |         |         | e se    |         |         |
+|         |         |         |         | almeno  |         |         |
+|         |         |         |         | un      |         |         |
+|         |         |         |         | campo   |         |         |
+|         |         |         |         | S02.06  |         |         |
+|         |         |         |         | dei     |         |         |
+|         |         |         |         | lotti   |         |         |
+|         |         |         |         | attivi  |         |         |
+|         |         |         |         | è       |         |         |
+|         |         |         |         | uguale  |         |         |
+|         |         |         |         | a :     |         |         |
+|         |         |         |         | 1,2,8,9 |         |         |
+|         |         |         |         |         |         |         |
+|         |         |         |         | o se    |         |         |
+|         |         |         |         | campo   |         |         |
+|         |         |         |         | S06.17= |         |         |
+|         |         |         |         | ’SI’    |         |         |
++---------+---------+---------+---------+---------+---------+---------+
