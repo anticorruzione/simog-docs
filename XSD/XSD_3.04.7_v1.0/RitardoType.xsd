@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<xsd:annotation>
+    	<xsd:documentation>Scheda Ritardo</xsd:documentation>
+    </xsd:annotation>
+    <xsd:include schemaLocation="SimpleTypes.xsd"/>
+    <xsd:complexType name="RitardoType">
+    	<!-- Termine previsto per la consegna ai sensi del comma 2 dell'art. 129 DPR 554/99 (precompilato modificabile) -->
+		<xsd:attribute name="DATA_TERMINE" use="required" type="simog:DbDateType"/>
+		<!-- Data della consegna dei lavori -->
+		<xsd:attribute name="DATA_CONSEGNA" use="optional" type="simog:DbDateType"/>
+		<!-- Tipologia comunicazione -->
+		<xsd:attribute name="TIPO_COMUN" use="required" type="simog:FlagTCType"/>
+		<!-- Durata della sospensione in giorni (in caso di sospensione) -->
+		<xsd:attribute name="DURATA_SOSP" use="required" type="simog:InteroType"/>
+		<!-- Motivazione della sospensione/ritardo -->
+		<xsd:attribute name="MOTIVO_SOSP" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1000"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<!-- DATA PRESENTAZIONE ISTANZA RECESSO -->
+		<xsd:attribute name="DATA_IST_RECESSO" use="optional" type="simog:DbDateType"/>
+		<!-- L'istanza di recesso è stata accolta -->
+		<xsd:attribute name="FLAG_ACCOLTA" use="optional" type="simog:FlagSNType"/>
+		<!-- Si è proceduto a consegna tardiva (in caso di ritardo) -->
+		<xsd:attribute name="FLAG_TARDIVA" use="required" type="simog:FlagSNType"/>
+		<!-- Si è proceduto alla ripresa dei lavori (in caso di sospensione) -->
+		<xsd:attribute name="FLAG_RIPRESA" use="required" type="simog:FlagSNType"/>
+		<!-- L'appaltatore ha formulato riserve -->
+		<xsd:attribute name="FLAG_RISERVA" use="required" type="simog:FlagSNType"/>
+		<!-- Eventuale rimborso delle spese in € -->
+		<xsd:attribute name="IMPORTO_SPESE" use="optional" type="simog:ImportoType"/>
+		<!-- Eventuale compenso degli oneri derivanti dal ritardo -->
+		<xsd:attribute name="IMPORTO_ONERI" use="optional" type="simog:ImportoType"/>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>           
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>       
+    </xsd:complexType>
+    <xsd:complexType name="RitardiType">
+    	<xsd:sequence>   
+			<xsd:element name="Ritardo" type="simog:RitardoType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>	
+	</xsd:complexType>		
+    
+</xsd:schema>
