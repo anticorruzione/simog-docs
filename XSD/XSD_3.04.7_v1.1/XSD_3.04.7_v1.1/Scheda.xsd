@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<!-- tipi di dati comuni -->
+   <xsd:include schemaLocation="Scheda_AType.xsd"></xsd:include>
+	<xsd:include schemaLocation="DatiGaraType.xsd"></xsd:include>
+	<xsd:include schemaLocation="SoggettiResponsabiliType.xsd"></xsd:include>
+	<xsd:include schemaLocation="SoggettiAggiudicatariType.xsd"></xsd:include>
+	<xsd:complexType name="SchedaType">
+		<xsd:sequence>
+    		<xsd:element name="DatiGara" type="simog:DatiGaraType" minOccurs="1" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiScheda" type="simog:DatiAggiudicazioneType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="Responsabili" type="simog:ResponsabiliType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="Aggiudicatari" type="simog:AggiudicatariType" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+   <xsd:element name="Scheda" type="simog:SchedaType"></xsd:element>
+
+   <xsd:complexType name="SchedaGaraCig">
+      <xsd:sequence>
+         <xsd:element name="Gara" type="simog:GaraType" minOccurs="1" maxOccurs="1"></xsd:element>
+         <xsd:element name="CIG" type="simog:CigType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SchedaGaraCig" type="simog:SchedaGaraCig"></xsd:element>
+    
+	<xsd:complexType name="DatiConsultaGaraType">
+		<xsd:sequence>
+    		<xsd:element name="DatiConsultaGara" type="simog:SchedaType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+   <xsd:element name="SchedaCIG" type="simog:DatiConsultaGaraType"></xsd:element>
+</xsd:schema>
