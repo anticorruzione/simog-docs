@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<xsd:annotation>
+    	<xsd:documentation>Scheda conclusione</xsd:documentation>
+    </xsd:annotation>
+    <!-- include dei tipi semplici -->
+    <xsd:include schemaLocation="SimpleTypes.xsd"/>
+    <xsd:include schemaLocation="ListTypes.xsd"/>
+    <xsd:complexType name="ConclusioneType"> 
+    	<!-- Termine previsto per la consegna ai sensi del comma 2 dell'art. 129 DPR 554/99 (precompilato modificabile) -->
+		<xsd:attribute name="ID_MOTIVO_INTERR" use="optional" type="simog:MotivoInterruzioneType"/>
+		<xsd:attribute name="ID_MOTIVO_RISOL" use="optional" type="simog:MotivoRisoluzioneType"/>
+		<xsd:attribute name="DATA_RISOLUZIONE" use="optional" type="simog:DbDateType"/>
+		<xsd:attribute name="FLAG_ONERI" use="optional" type="simog:FlagOneriType"/>
+		<xsd:attribute name="ONERI_RISOLUZIONE" use="optional" type="simog:ImportoType"/>
+		<xsd:attribute name="FLAG_POLIZZA" use="optional" type="simog:FlagSNType"/>
+		<xsd:attribute name="DATA_ULTIMAZIONE" use="optional" type="simog:DbDateType"/>
+		<xsd:attribute name="NUM_INFORTUNI" use="required" type="simog:InteroType"/>
+		<xsd:attribute name="NUM_INF_PERM" use="required" type="simog:InteroType"/>
+		<xsd:attribute name="NUM_INF_MORT" use="required" type="simog:InteroType"/>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>      
+      <xsd:attribute name="TERMINE_CONTRATT_ULTIMAZIONE" use="optional" type="simog:DbDateType"/>
+      <xsd:attribute name="NUM_GIORNI_PROROGA" use="optional" type="simog:InteroType"/>
+      <xsd:attribute name="DATA_VERB_CONSEGNA_AVVIO" use="optional" type="simog:DbDateType"/>
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>       
+    </xsd:complexType>
+</xsd:schema>

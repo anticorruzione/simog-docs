@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- is3025_REQUISITIActive -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+   <!-- tipi di dati comuni -->
+   <xsd:include schemaLocation="SimpleTypes.xsd"/>
+   <xsd:include schemaLocation="ListTypes.xsd"/>
+
+   <!-- struttura dati per la trasmissione dei docmuenti associati al requisito, in caso di requisito non codificato -->
+   <xsd:complexType name="ReqDocType">
+      <xsd:attribute name="codice_tipo_doc" type="simog:CodTipoDocType" use="required"/>
+      <xsd:attribute name="descrizione_documento" use="required">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="800"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <xsd:attribute name="emettitore" use="required">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="300"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+         </xsd:attribute>
+      <xsd:attribute name="fax" type="simog:NumTelType" use="required"/>
+      <xsd:attribute name="telefono" type="simog:NumTelType" use="required"/>
+      <xsd:attribute name="mail" use="required">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <xsd:attribute name="mail_pec" use="required">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+   </xsd:complexType>
+   
+   <!-- struttura dati per la trasmissione dei requisiti -->
+   <xsd:complexType name="ReqGaraType">
+      <xsd:sequence>
+         <!-- Elenco dei CIG ai quali il requisito è associato, se non sono presenti CIG 
+              il requisito è valido per tutta la gara -->
+         <xsd:element name="CIG" type="simog:CigType" minOccurs="0" maxOccurs="unbounded" />
+         <xsd:element name="DOCUMENTO" type="simog:ReqDocType" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+      <xsd:attribute name="codice_dettaglio" type="simog:CodRequisitoType" use="required"/>
+      <!--  va compilato solo per requisito non codificato -->
+      <xsd:attribute name="descrizione" use="required">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="1024"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <!-- valore del requisito -->
+      <xsd:attribute name="valore" type="simog:CuiType" use="required"/>
+      <!-- flag di esclusione se requisito non soddisfatto -->
+      <xsd:attribute name="flag_esclusione" type="simog:FlagSNType" use="required"/>
+      <!-- flag di comprova del requisito in fase di presentazione offerta -->
+      <xsd:attribute name="flag_comprova_offerta" type="simog:FlagSNType" use="required"/>
+      <!-- flag requisito con avvalimento -->
+      <xsd:attribute name="flag_avvalimento" type="simog:FlagSNType" use="required"/>
+      <!-- flag bando tipo -->
+      <xsd:attribute name="flag_bando_tipo" type="simog:FlagSNType" use="required"/>
+      <!-- flag riservatezza -->
+      <xsd:attribute name="flag_riservatezza" type="simog:FlagSNType" use="required"/>      
+   </xsd:complexType>
+
+   <!-- elemento principale per la trasmissione dei requisiti -->
+	<xsd:element name="RequisitiWS">
+      <xsd:complexType >
+         <xsd:sequence>
+            <xsd:element name="Requisito" type="simog:ReqGaraType" minOccurs="0" maxOccurs="unbounded" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+	
+</xsd:schema>

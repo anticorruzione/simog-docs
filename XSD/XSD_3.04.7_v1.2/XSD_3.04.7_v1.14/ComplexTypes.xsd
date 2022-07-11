@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:simog="xmlbeans.massload.simog.avlp.it" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="xmlbeans.massload.simog.avlp.it">
+    <xsd:annotation>
+    	<xsd:documentation>Tipi complessi comuni</xsd:documentation>
+    </xsd:annotation>
+
+   <xsd:include schemaLocation="SimpleTypes.xsd"/>
+   <xsd:include schemaLocation="ListTypes.xsd"/>
+
+   <!--   inizio is3031_RNFDBGL01Active -->
+   <xsd:complexType name="TipiAppaltoType">
+      <xsd:attribute name="ID_APPALTO" type="simog:TipoAppaltoType" use="required"/>
+   </xsd:complexType>
+   <xsd:complexType name="TipiAppaltoLottoType">
+      <xsd:attribute name="ID_APPALTO" type="simog:TipoAppaltoType" use="required"/>
+   </xsd:complexType>
+   <xsd:complexType name="DatiCUPType">
+         <xsd:attribute name="CUP" type="simog:CupType" use="required" />
+         <xsd:attribute name="ID_RICHIESTA" type="simog:LongType" use="optional" />        
+         <xsd:attribute name="DATI_DIPE" use="optional">
+            <xsd:simpleType>
+               <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="1024"></xsd:maxLength>
+               </xsd:restriction>
+            </xsd:simpleType>
+         </xsd:attribute>
+      <xsd:attribute name="VALIDO" type="simog:FlagSNType" use="optional" />        
+      <xsd:attribute name="OK_UTENTE" type="simog:FlagSNType" use="optional" />
+	  <!-- Inizio 3.04.6.2 -->
+      <xsd:attribute name="TEMATICA_PNRR"  type="xsd:string" use="optional" /> 	 
+      <!-- Fine 3.04.6.2 -->	  
+   </xsd:complexType>
+
+   <xsd:complexType name="CUPLOTTOType">
+      <xsd:sequence>
+         <xsd:element name="CODICICUP" type="simog:DatiCUPType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+      <!-- necessario solo per la fase di conferma dei dati durante la pubblicazione -->
+      <xsd:attribute name="CIG" type="simog:CigType" use="optional" />
+   </xsd:complexType>
+<!--     fine is3031_RNFDBGL01Active          -->
+</xsd:schema>
