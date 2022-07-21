@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:simog="xmlbeans.massload.simog.avlp.it" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="xmlbeans.massload.simog.avlp.it">
+	<!-- tipi di dati comuni -->
+	<xsd:include schemaLocation="SimpleTypes.xsd"/>
+   <xsd:include schemaLocation="ComplexTypes.xsd"/>
+	<xsd:element name="FeedBack">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="InfoFlusso" type="simog:FlussoType">
+					<xsd:annotation>
+						<xsd:documentation>Dati relativi al flusso di feedback</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" name="AnomalieSchede">
+					<xsd:annotation>
+						<xsd:documentation>Sequenza delle schede per le quali sono state rilevate anomalie</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:complexContent>
+							<xsd:extension base="simog:AnomScheda_AType"/>
+						</xsd:complexContent>
+					</xsd:complexType>
+				</xsd:element>            
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="FlussoType">
+		<xsd:attribute name="DATA_ELABORAZIONE" type="simog:DbDateType" use="required"/>
+		<xsd:attribute name="NUM_ELABORATE" type="simog:InteroType" use="required"/>
+		<xsd:attribute name="NUM_ERRORE" type="simog:InteroType" use="required"/>
+		<xsd:attribute name="NUM_WARNING" type="simog:InteroType" use="required"/>
+		<xsd:attribute name="NUM_CARICATE" type="simog:InteroType" use="required"/>
+	</xsd:complexType> 
+	<xsd:complexType name="AnomaliaType">
+	   <xsd:attribute name="CODICE" type="xsd:string" />
+	   <xsd:attribute name="DESCRIZIONE" type="xsd:string" use="required" />
+	   <xsd:attribute name="LIVELLO" use="required" type="simog:LivelloType"/>
+	   <xsd:attribute name="ELEMENTO" type="simog:InteroType" use="required" />
+	   <xsd:attribute name="SCHEDA" type="simog:TipiSchedeType"></xsd:attribute>
+	   <xsd:attribute name="PROGRESSIVO" type="simog:InteroType"></xsd:attribute>
+	   <xsd:attribute name="CAMPO_XML" type="simog:NomeCampoType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"/>           
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"/>
+      
+	</xsd:complexType>
+	<xsd:complexType name="AnomScheda_AType">
+		<xsd:sequence minOccurs="0">
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="Anomalia" type="simog:AnomaliaType"/>
+         <xsd:element maxOccurs="unbounded" minOccurs="0" name="IdScheda" type="simog:RecIdSchedaInsType"/>
+         <!-- is3031_RNFDBGL01Active          -->
+         <xsd:element name="CUPLOTTO" type="simog:CUPLOTTOType" minOccurs="0" maxOccurs="1"></xsd:element>
+         
+		</xsd:sequence>
+		<xsd:attribute name="CIG" use="required" type="simog:CigType">
+		</xsd:attribute>
+		<xsd:attribute name="PROGRESSIVO" type="simog:InteroType" use="required"/>
+		<xsd:attribute name="CUI" type="simog:CuiType"/>
+	</xsd:complexType>
+   <xsd:complexType name="RecIdSchedaInsType">
+      <xsd:attribute name="SCHEDA" type="simog:TipiSchedeType" use="required"/>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="required"/>           
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"/>
+      <xsd:attribute name="OPERAZIONE" type="simog:TipiOperazioneType" use="required"/>
+   </xsd:complexType>
+</xsd:schema>
