@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:simog="xmlbeans.massload.simog.avlp.it" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="xmlbeans.massload.simog.avlp.it">
+    <xsd:annotation>
+    	<xsd:documentation>Tipi semplici</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleType name="DbDateType">
+       <xsd:restriction base="xsd:dateTime">
+          <!-- <xsd:pattern value="\p{Nd}{4}-\p{Nd}{2}-\p{Nd}{2}T\p{Nd}{2}:\p{Nd}{2}:\p{Nd}{2}"/>-->
+<!--   is3028_RFWEBSC01Active -->
+       <xsd:minInclusive value="1970-01-01T00:00:00.000+01:00"></xsd:minInclusive>
+       <xsd:maxInclusive value="2070-12-31T00:00:00.000+01:00"></xsd:maxInclusive>
+       </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FlagSNType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="S"/>
+			<xsd:enumeration value="N"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Inizio 3.04.7 -->
+   <xsd:simpleType name='FlagSNQType'>
+    <xsd:restriction base='xsd:string'>
+     <xsd:enumeration value='S'/>
+     <xsd:enumeration value='N'/>
+	 <xsd:enumeration value='Q'/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   <!-- Fine 3.04.7 -->	
+	<xsd:simpleType name="FlagSOType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="S"/>                 <!-- settore Speciale -->
+			<xsd:enumeration value="O"/>                 <!-- settore Ordinario -->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlagAvvalimentoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="0"/> <!-- nessun valore selezionato  -->
+			<xsd:enumeration value="1"/> <!-- avvalimento per requisiti  -->
+			<xsd:enumeration value="2"/> <!-- avvalimento per attestazione  -->
+			<xsd:enumeration value="3"/>  <!-- avvalimento per requisiti e attestazione  -->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodFiscType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CigType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+   <xsd:simpleType name="CuiType">
+      <xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CupType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LuogoNutsType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LuogoIstatType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InteroType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="99999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LongType">
+		<xsd:restriction base="xsd:long">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999999999999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ImportoType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999999999999.999"/>
+			<xsd:totalDigits value="15"/>
+			<xsd:fractionDigits value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ImportoLottoType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="-1"/>
+			<xsd:maxInclusive value="999999999999.999"/>
+			<xsd:totalDigits value="15"/>
+			<xsd:fractionDigits value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PercentualeType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="999.99999"/>
+			<xsd:totalDigits value="8"/>
+			<xsd:fractionDigits value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SezioneType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PA"/>                <!-- progettisti  fase aggiudicazione -->
+			<xsd:enumeration value="RA"/>                <!-- responsabili fase aggiudicazione -->
+			<xsd:enumeration value="IN"/>		            <!-- responsabili fase iniziale -->
+			<xsd:enumeration value="CO"/>                <!-- responsabili fase collaudo -->
+         <xsd:enumeration value="RE"/>                <!-- responsabili fase aggiudicazione esclusi -->
+         <xsd:enumeration value="RS"/>                <!-- responsabili fase aggiudicazione sottosoglia-->
+         <xsd:enumeration value="RQ"/>                <!-- responsabili fase adesione accordo quadro -->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TipoSchedaType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="F"/>                 <!-- Forniture -->
+			<xsd:enumeration value="S"/>                 <!-- Servizi -->
+			<xsd:enumeration value="L"/>                 <!-- Lavori -->
+		</xsd:restriction>
+	</xsd:simpleType>
+    <xsd:simpleType name="FlagOneriType">
+    	<xsd:restriction base="xsd:string">
+    		<xsd:enumeration value="0" />                <!-- senza oneri -->        
+    		<xsd:enumeration value="1" />                <!-- riconoscimento -->
+    		<xsd:enumeration value="2" />                <!-- addebito -->
+    	</xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FlagPagamentoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1"/>                 <!-- somme -->
+			<xsd:enumeration value="2"/>                 <!-- beni -->
+			<xsd:enumeration value="3"/>                 <!-- entrambe -->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlagRitardoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="P"/>                 <!-- NESSUNO -->
+			<xsd:enumeration value="A"/>                 <!-- ANTICIPO -->
+			<xsd:enumeration value="R"/>                 <!-- RITARDO -->
+		</xsd:restriction>
+	</xsd:simpleType>   
+    <xsd:simpleType name="FlagTCType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="R"/>                 <!--  RITARDO NELLA CONSEGNA -->
+			<xsd:enumeration value="S"/>                 <!-- SOSPENSIONE NELLA CONSEGNA -->
+		</xsd:restriction>
+	</xsd:simpleType>
+    <xsd:simpleType name="FlagModoCollaudoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1"/>                 <!-- collaudo finale -->
+			<xsd:enumeration value="2"/>                 <!-- corso d'opera -->
+			<xsd:enumeration value="3"/>                 <!-- entrambi -->
+		</xsd:restriction>
+	</xsd:simpleType>
+    <xsd:simpleType name="FlagEsitoCollaudoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="P"/>                    <!-- positivo -->
+			<xsd:enumeration value="N"/>                    <!-- negativo -->
+		</xsd:restriction>
+	</xsd:simpleType>	 
+   <xsd:simpleType name="EsitoProceduraType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="1"/>                  <!-- Aggiudicata -->
+         <xsd:enumeration value="2"/>                  <!-- Annullata/Revocata successivamente alla pubblicazione -->
+         <xsd:enumeration value="3"/>                  <!-- Deserta -->
+         <xsd:enumeration value="4"/>                  <!-- Senza esito a seguito di offerte irregolari/inammissibili, non congrue o non appropriate -->
+		 <xsd:enumeration value="5"/>				   <!-- Proposta di aggiudicazione -->
+		 <xsd:enumeration value="6"/>                  <!-- Annullata/Revocata prima dell'apertura delle buste -->
+		 <xsd:enumeration value="7"/>                  <!-- Annullata/Revocata dopo l'apertura delle buste -->
+      </xsd:restriction>
+   </xsd:simpleType>   
+   <xsd:simpleType name="IdSchedaType">
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="50"/>
+         <xsd:minLength value="1"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="TipiSchedeType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="DATI_COMUNI"/>
+         <xsd:enumeration value="AGGIUDICAZIONE"/>
+         <xsd:enumeration value="ESCLUSO"/>
+         <xsd:enumeration value="SOTTOSOGLIA"/>
+         <xsd:enumeration value="ADESIONE"/>
+         <xsd:enumeration value="FASE_INIZIALE"/>
+         <xsd:enumeration value="STIPULA"/>
+         <xsd:enumeration value="STATO_AVANZAMENTO"/>
+         <xsd:enumeration value="FINE_LAVORI"/>
+         <xsd:enumeration value="COLLAUDO"/>
+         <xsd:enumeration value="IPOTESI_RECESSO"/>
+         <xsd:enumeration value="ACCORDO_BONARIO"/>
+         <xsd:enumeration value="SOSPENSIONE"/>
+         <xsd:enumeration value="VARIANTE"/>
+         <xsd:enumeration value="SUBAPPALTO"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="TipiOperazioneType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="INSERIMENTO"/>
+         <xsd:enumeration value="MODIFICA"/>
+         <xsd:enumeration value="ELIMINAZIONE"/>
+         <xsd:enumeration value="VARIAZIONE_ANAG"/> <!-- PP 3.02.3  -->
+         <xsd:enumeration value="VARIAZIONE_SA"/> <!-- PP 3.02.3.3  -->
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="LivelloType">
+      <xsd:restriction base="xsd:string">
+	            <xsd:enumeration value="ERRORE" />
+	            <xsd:enumeration value="ATTENZIONE" />
+	            <xsd:enumeration value="AVVISO" />
+      </xsd:restriction>
+   </xsd:simpleType>
+   
+   <xsd:simpleType name="NomeCampoType">
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="50"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <!-- is3025_REQUISITIActive -->
+    <xsd:simpleType name="NumTelType">
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="13"></xsd:maxLength>
+      <xsd:pattern value="[0-9]+"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <!-- is3028_RFWSGL01Active -->
+   <xsd:simpleType name="StatoSchedaType">
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="1"/>
+         <xsd:enumeration value="1" /> <!-- in lavorazione -->
+         <xsd:enumeration value="2" /> <!-- confermata -->
+      </xsd:restriction>
+   </xsd:simpleType>
+   <!-- is3028_RFWEBSC00Active -->
+   <xsd:simpleType name="OrigineSchedaType">
+      <xsd:restriction base="xsd:string">
+         <xsd:maxLength value="1"/>
+         <xsd:enumeration value="0" /> <!-- non definita -->
+         <xsd:enumeration value="1" /> <!-- Simog Web -->
+         <xsd:enumeration value="2" /> <!-- Simog MassLoader -->
+         <xsd:enumeration value="3" /> <!-- Simog LoaderAppalto -->
+         <xsd:enumeration value="4" /> <!-- Sistema AVCPass -->
+      </xsd:restriction>
+   </xsd:simpleType>
+   	<xsd:simpleType name="InteroType99">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

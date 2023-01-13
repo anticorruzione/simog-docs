@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<!-- tipi di dati comuni -->
+	<xsd:include schemaLocation="DatiGaraType.xsd"></xsd:include> 
+	<xsd:element name="IniziativaWS">
+	<xsd:complexType >
+		<xsd:sequence>
+			<xsd:element name="Iniziativa" type="simog:IniziativaType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	</xsd:element> 
+	
+	<xsd:complexType name="TerritorioWS">
+		<xsd:sequence>
+			<xsd:element name="Territori" type="simog:TerritorioType" minOccurs="0" maxOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TerritorioType">
+		<xsd:sequence>
+			<xsd:element name="CodRegioneIstat" type="simog:LuogoIstatType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AmbitoType">
+		<xsd:sequence>
+			<xsd:element name="AmbitoLotto" type="xsd:string" minOccurs="1" maxOccurs="4"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IniziativaType">
+        <xsd:sequence>
+			<xsd:element name="CATEGORIE_I" type="simog:CategLottoType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="TERRITORI_I" type="simog:TerritorioType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="AMBITI_LOTTO_I" type="simog:AmbitoType" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		
+		<xsd:attribute name="ID_GARA_I" type="simog:LongType" use="optional" />
+		<xsd:attribute name="CIG_I" type="simog:CigType" use="optional" />
+		<xsd:attribute name="DESCRIZIONE_SOGG_AGG_I" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1024"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIZIONE_INIZIATIVA_I" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="2048"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		
+		<xsd:attribute name="SSAA_RIF_I" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1024"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="STATO_I" type="simog:FlagSNType" />
+		<xsd:attribute name="CONFRONTO_COMPETITIVO_I" type="simog:FlagSNType" use="optional"/>
+		<xsd:attribute name="NOTE_I" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="2048"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="URL_I" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="512"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	
+	
+</xsd:schema>

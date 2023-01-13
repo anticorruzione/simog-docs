@@ -1,0 +1,382 @@
+﻿<?xml-stylesheet type="text/xsl" href="xsd2doc.xsl"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:simog="xmlbeans.massload.simog.avlp.it" targetNamespace="xmlbeans.massload.simog.avlp.it" elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<!-- tipi di dati comuni -->
+	<xsd:include schemaLocation="SimpleTypes.xsd"/>
+   <xsd:include schemaLocation="ListTypes.xsd"/>
+   <xsd:include schemaLocation="ComplexTypes.xsd"/>
+	<xsd:include schemaLocation="DatiInizioType.xsd"></xsd:include>	
+	<xsd:include schemaLocation="AvanzamentiType.xsd"></xsd:include>
+	<xsd:include schemaLocation="ConclusioneType.xsd"></xsd:include>
+	<xsd:include schemaLocation="CollaudoType.xsd"></xsd:include>
+	<xsd:include schemaLocation="RitardoType.xsd"></xsd:include>
+	<xsd:include schemaLocation="AccordoBonarioType.xsd"></xsd:include>
+	<xsd:include schemaLocation="SospensioneType.xsd"></xsd:include>
+	<xsd:include schemaLocation="VarianteType.xsd"></xsd:include>		
+	<xsd:include schemaLocation="SubappaltoType.xsd"></xsd:include>			
+	<xsd:complexType name="DatiComuniType">
+		<xsd:attribute name="CIG" use="required" type="simog:CigType"/>
+		<xsd:attribute name="FLAG_ENTE_SPECIALE" type="simog:FlagSOType"
+			use="required" />
+		<xsd:attribute name="TIPO_CONTRATTO"
+			type="simog:TipoSchedaType" use="required">
+		</xsd:attribute>		
+		<xsd:attribute name="ID_CATEG_SA" type="simog:CategSAType"
+			use="optional" />
+		<xsd:attribute name="CF_AMM_AGENTE" type="simog:CodFiscType"
+			use="optional" />
+		<xsd:attribute name="DEN_AMM_AGENTE" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="CF_AMM" type="simog:CodFiscType"
+			use="required" />
+		<xsd:attribute name="DEN_AMM" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="CF_SA" type="simog:CodFiscType"
+			use="required" />
+		<xsd:attribute name="DEN_SA" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="CODICE_CC" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="50"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="DENOM_CC" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="ID_TIPOLOGIA_SA" type="simog:TipologiaSAType" use="optional"></xsd:attribute>
+		<xsd:attribute name="FLAG_SA_AGENTE" type="simog:FlagSNType" use="required"></xsd:attribute>
+		<xsd:attribute name="CF_RUP" type="simog:CodFiscType" use="required"></xsd:attribute>
+      <xsd:attribute name="ESITO_PROCEDURA" type="simog:EsitoProceduraType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="TIPOLOGIA_PROCEDURA" type="simog:TipologiaProceduraType" use="optional"></xsd:attribute>
+      <xsd:attribute name="FLAG_ACC_QUADRO" type="simog:FlagSNType" use="optional" />
+      <xsd:attribute name="DURATA_ACCQUADRO_CONVENZIONE" type="simog:InteroType" use="optional"></xsd:attribute>
+      <xsd:attribute name="FLAG_CENTRALE_STIPULA" type="simog:FlagSNType" use="optional"></xsd:attribute>      
+      <xsd:attribute name="MODO_REALIZZAZIONE" type="simog:ModoRealizzazioneType" use="optional"/>   
+      <xsd:attribute name="FLAG_ESCLUSO" type="simog:FlagSNType" use="optional"/>          
+      <xsd:attribute name="ID_ESCLUSIONE" type="simog:ArtEsclusioneType" use="optional"/>    
+      <!-- is3028_RFWSGL01Active (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>              
+      <!-- is3028_RFWEBSC00Active (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="ORIGINE_SCHEDA" type="simog:OrigineSchedaType" use="optional"/>
+      <!-- is3028_RFWSSC00Active  (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="PROVV_PRESA_CARICO" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="250"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>  
+	  
+	</xsd:complexType> 
+	<xsd:complexType name="DatiAggiudicazioneType">
+		<xsd:sequence>
+			<xsd:element name="DatiComuni" type="simog:DatiComuniType"></xsd:element>
+         <xsd:element name="Pubblicazione" type="simog:PubblicazioneType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="SchedaCompleta" type="simog:SchedaCompletaType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SchedaCompletaType">
+		<xsd:sequence>
+         <xsd:element name="CUI" minOccurs="1" maxOccurs="1" type="simog:CuiType" />
+			<xsd:element name="Aggiudicazione" type="simog:AggiudicazioneType" minOccurs="0" maxOccurs="1"></xsd:element>
+        	<xsd:element name="Sottosoglia" type="simog:SchedaSottosogliaType" minOccurs="0" maxOccurs="1"></xsd:element>
+        	<xsd:element name="Escluso" type="simog:SchedaEsclusoType" minOccurs="0" maxOccurs="1"></xsd:element>
+         <xsd:element name="Adesione" type="simog:AdesioneType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiInizio" type="simog:DatiInizioType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiStipula" type="simog:DatiStipulaType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiAvanzamenti" type="simog:AvanzamentiType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiConclusione" type="simog:ConclusioneType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiCollaudo" type="simog:DatiCollaudoType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiRitardi" type="simog:RitardiType" minOccurs="0" maxOccurs="1"></xsd:element>		
+			<xsd:element name="DatiAccordi" type="simog:AccordiBonariType" minOccurs="0" maxOccurs="1"></xsd:element>		
+			<xsd:element name="DatiSospensioni" type="simog:SospensioniType" minOccurs="0" maxOccurs="1"></xsd:element>
+			<xsd:element name="DatiVarianti" type="simog:VariantiType" minOccurs="0" maxOccurs="1"></xsd:element>			
+			<xsd:element name="DatiSubappalti" type="simog:SubappaltiType" minOccurs="0" maxOccurs="1"></xsd:element>	
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AggiudicazioneType">
+		<xsd:sequence>
+			<xsd:element name="Appalto" type="simog:AppaltoType"/>
+			<xsd:element name="TipiAppaltoLav" type="simog:TipiAppaltoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="TipiAppaltoForn" type="simog:TipiAppaltoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Condizioni" type="simog:CondizioneType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Requisiti" type="simog:RequisitoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Finanziamenti" type="simog:FinanziamentoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Aggiudicatari" type="simog:SoggAggiudicatarioType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Incaricati" type="simog:IncaricatoType" minOccurs="0" maxOccurs="unbounded"/>         
+<!-- BUILD_130 
+        	<xsd:element name="LuoghiNuts" type="simog:LuogoNutsAggType" minOccurs="0" maxOccurs="unbounded"/>
+-->
+        	<xsd:element name="DitteAusiliarie" type="simog:DittaAusiliariaType" minOccurs="0" maxOccurs="unbounded"/>         
+
+<!-- inizio     is3031_RNFDBGL01Active          -->
+         <xsd:element name="CUPLOTTO" type="simog:CUPLOTTOType" minOccurs="0" maxOccurs="1"></xsd:element>
+<!-- fine    is3031_RNFDBGL01Active          -->
+		</xsd:sequence>
+	</xsd:complexType> 
+	<xsd:complexType name="AppaltoType">
+		<xsd:attribute name="PROCEDURA_ACC" type="simog:FlagSNType" use="required" />
+		<xsd:attribute name="PREINFORMAZIONE" type="simog:FlagSNType" use="required" />
+		<xsd:attribute name="TERMINE_RIDOTTO" type="simog:FlagSNType" use="required" />
+		<xsd:attribute name="ID_MODO_INDIZIONE" type="simog:ModoIndizioneType" use="optional"></xsd:attribute>		
+		<xsd:attribute name="ID_MODO_GARA" type="simog:ModoGaraType"></xsd:attribute><!-- 3.04.2 -->
+		<xsd:attribute name="NUM_IMPRESE_INVITATE" type="simog:InteroType" use="required"></xsd:attribute>
+		<xsd:attribute name="NUM_IMPRESE_RICHIEDENTI" type="simog:InteroType" use="optional"></xsd:attribute>
+		<xsd:attribute name="NUM_IMPRESE_OFFERENTI" type="simog:InteroType" use="required"></xsd:attribute>
+		<xsd:attribute name="NUM_OFFERTE_AMMESSE" type="simog:InteroType" use="required"></xsd:attribute>
+		<xsd:attribute name="DATA_VERB_AGGIUDICAZIONE" type="simog:DbDateType" use="required"></xsd:attribute>
+		<xsd:attribute name="DATA_SCADENZA_RICHIESTA_INVITO" type="simog:DbDateType" use="optional"></xsd:attribute>
+		<xsd:attribute name="DATA_SCADENZA_PRES_OFFERTA" type="simog:DbDateType" use="optional"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_AGGIUDICAZIONE" type="simog:ImportoType" use="required" />
+		<xsd:attribute name="ID_SCELTA_CONTRAENTE" type="simog:SceltaContraenteType" use="optional"></xsd:attribute><!-- 3.04.2 -->
+		<xsd:attribute name="IMPORTO_LAVORI" type="simog:ImportoType" use="required"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_SERVIZI" type="simog:ImportoType" use="required"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_FORNITURE" type="simog:ImportoType" use="required"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_ATTUAZIONE_SICUREZZA" type="simog:ImportoType" use="required" />
+		<xsd:attribute name="IMPORTO_DISPOSIZIONE" type="simog:ImportoType" use="required"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_PROGETTAZIONE" type="simog:ImportoType" use="required"></xsd:attribute>
+      <xsd:attribute name="IMP_NON_ASSOG" type="simog:ImportoType" use="optional" />
+		<xsd:attribute name="SISTEMA_QUALIFICAZIONE" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="CRITERI_SELEZIONE_STABILITI_SA" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="ID_TIPO_PRESTAZIONE" type="simog:TipoPrestazioneType" use="required"/>
+		<xsd:attribute name="CUP" use="required" type="simog:CupType"/>
+		<xsd:attribute name="FLAG_ACCORDO_QUADRO"	type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="LUOGO_ISTAT" type="simog:LuogoIstatType" use="optional"/>
+      <xsd:attribute name="LUOGO_NUTS" use="optional" type="simog:LuogoNutsType"/>
+		<xsd:attribute name="ASTA_ELETTRONICA" type="simog:FlagSNType" use="required" />
+		<xsd:attribute name="PERC_RIBASSO_AGG"	type="simog:PercentualeType" use="optional"/>
+		<xsd:attribute name="PERC_OFF_AUMENTO"	type="simog:PercentualeType" use="optional"/>
+		<xsd:attribute name="DATA_INVITO" type="simog:DbDateType" use="optional"></xsd:attribute>
+		<xsd:attribute name="NUM_MANIF_INTERESSE" type="simog:InteroType" use="required"/>
+		<xsd:attribute name="DATA_MANIF_INTERESSE" type="simog:DbDateType" use="optional"/>
+		<xsd:attribute name="FLAG_RICH_SUBAPPALTO" type="simog:FlagSNType" use="required"/>
+		<xsd:attribute name="NUM_OFFERTE_ESCLUSE" type="simog:InteroType" use="required"/>
+      <xsd:attribute name="OFFERTA_MASSIMO" type="simog:PercentualeType" use="optional" />
+		<xsd:attribute name="OFFERTA_MINIMA" type="simog:PercentualeType"	use="optional" />
+		<xsd:attribute name="VAL_SOGLIA_ANOMALIA" type="simog:PercentualeType" use="optional" />
+		<xsd:attribute name="NUM_OFFERTE_FUORI_SOGLIA" type="simog:InteroType" use="required" />
+		<xsd:attribute name="NUM_IMP_ESCL_INSUF_GIUST" type="simog:InteroType" use="required" />
+		<xsd:attribute name="COD_STRUMENTO" type="simog:TipoStrumentoType" use="optional"/>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="OPERE_URBANIZ_SCOMPUTO" type="simog:FlagSNType" use="optional"></xsd:attribute>
+      <xsd:attribute name="MODALITA_RIAGGIUDICAZIONE" type="simog:ModoRiaggiudType" use="optional"></xsd:attribute>      
+      <xsd:attribute name="CODICE_CONTRATTO" type="simog:IdSchedaType" use="optional"></xsd:attribute>      
+      <xsd:attribute name="FLAG_AGGIUD_PRINCIPALE" type="simog:FlagSNType" use="optional"></xsd:attribute>            
+      <xsd:attribute name="PROG_CUI_RIAGGIUDICATO" type="simog:InteroType" use="optional"></xsd:attribute>  
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>   
+      <!-- is3028_RFWEBSC00Active (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="ORIGINE_SCHEDA" type="simog:OrigineSchedaType" use="optional"/>   
+      <!--   is3031_RNFDBGL01Active -->
+      <xsd:attribute name="FLAG_CUP" type="simog:FlagSNType" use="optional" /> 
+      <xsd:attribute name="RELAZIONE_UNICA" type="simog:FlagSNType" use="optional" />	  <!-- 3.04.5 -->
+	</xsd:complexType>
+	<xsd:complexType name="SoggAggiudicatarioType">
+   	<xsd:attribute name="ID_TIPOAGG" type="simog:TipoAggiudicatarioType" use="required" />
+      <xsd:attribute name="RUOLO" type="simog:RuoloAggiudicatarioType" use="optional" />
+      <xsd:attribute name="FLAG_AVVALIMENTO" type="simog:FlagAvvalimentoType" use="required" />
+      <xsd:attribute name="CF_AUSILIARIA" type="simog:CodFiscType" use="optional"/>
+		<xsd:attribute name="CODICE_FISCALE_AGGIUDICATARIO" type="simog:CodFiscType" use="required" />
+      <xsd:attribute name="CODICE_STATO" type="simog:StatoEsteroType" use="required" />
+      <xsd:attribute name="ID_GRUPPO" type="simog:InteroType99" use="optional" /> 
+	    <xsd:attribute name="PERC_RIBASSO_AGG"	type="simog:PercentualeType" use="optional"/>
+		<xsd:attribute name="PERC_OFF_AUMENTO"	type="simog:PercentualeType" use="optional"/>
+        <xsd:attribute name="IMPORTO_AGGIUDICAZIONE" type="simog:ImportoType" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="CondizioneType">
+		<xsd:attribute name="ID_CONDIZIONE" type="simog:CondizioneAggType" use="required"/>
+	</xsd:complexType>
+
+<!-- is3031_RNFDBGL01Active spostato in ComplexTypes -->
+<!-- 	<xsd:complexType name="TipiAppaltoType"> -->
+<!-- 		<xsd:attribute name="ID_APPALTO" type="simog:TipoAppaltoType" use="required"/> -->
+<!-- 	</xsd:complexType> -->
+
+	<xsd:complexType name="IncaricatoType">
+		<xsd:attribute name="SEZIONE" type="simog:SezioneType" use="required"/>
+		<xsd:attribute name="ID_RUOLO" type="simog:RuoloResponsabileType" use="required"/>
+		<xsd:attribute name="CIG_PROG_ESTERNA"	type="simog:CigType" use="optional"/> 
+		<xsd:attribute name="DATA_AFF_PROG_ESTERNA" type="simog:DbDateType" use="optional"/>
+		<xsd:attribute name="DATA_CONS_PROG_ESTERNA" type="simog:DbDateType" use="optional"/>		
+		<xsd:attribute name="CODICE_FISCALE_RESPONSABILE" type="simog:CodFiscType" use="required" /> 
+      <xsd:attribute name="CODICE_STATO" type="simog:StatoEsteroType" use="optional" />
+      <xsd:attribute name="PERSONA_GIURIDICA" type="simog:FlagSNType" use="optional" />
+	   <xsd:attribute name="ID_GRUPPO_INCARICATO" type="simog:InteroType99" use="optional" /> <!-- 3.04.5 -->
+	   <xsd:attribute name="MANDANTE" type="simog:FlagSNType" use="optional" /> <!-- 3.04.5 -->
+	</xsd:complexType>
+	<xsd:complexType name="PubblicazioneType">
+		<xsd:attribute name="DATA_GUCE" type="simog:DbDateType" use="optional"/>
+		<xsd:attribute name="DATA_GURI" type="simog:DbDateType" use="optional"/>
+		<xsd:attribute name="DATA_ALBO" type="simog:DbDateType" use="optional"/>
+      <xsd:attribute name="DATA_BORE" type="simog:DbDateType" use="optional"/>
+		<xsd:attribute name="QUOTIDIANI_NAZ" type="simog:InteroType" use="optional" />
+		<xsd:attribute name="QUOTIDIANI_REG" type="simog:InteroType" use="optional" />
+      <xsd:attribute name="PERIODICI" type="simog:InteroType" use="optional" />
+		<xsd:attribute name="PROFILO_COMMITTENTE" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="SITO_MINISTERO_INF_TRASP" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="SITO_OSSERVATORIO_CP" type="simog:FlagSNType" use="optional" />
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional" />
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional" />
+      <xsd:attribute name="NUMERO_GUCE" type="simog:CuiType" use="optional" />
+      <xsd:attribute name="NUMERO_GURI" type="simog:CuiType" use="optional" />
+      <xsd:attribute name="NUMERO_BORE" type="simog:CuiType" use="optional" />
+      <xsd:attribute name="LINK_SITO" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="250"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <!-- MEV 34470 3.04.8 -->
+      <xsd:attribute name="LINK_AFFIDAMENTO_DIRETTO" type="xsd:string"  use="optional"/>
+      <!-- FINE MEV 34470 3.04.8 -->
+      <xsd:attribute name="FLAG_BENICULT" type="simog:FlagSNType" use="optional" />
+      <xsd:attribute name="FLAG_SOSPESO" type="simog:FlagSNType" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="RequisitoType">
+		<xsd:attribute name="ID_CATEGORIA" type="simog:CategoriaType"
+			use="required" />
+		<xsd:attribute name="CLASSE_IMPORTO" type="simog:ClasseImportoType" use="required" />
+		<xsd:attribute name="PREVALENTE" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="SCORPORABILE" type="simog:FlagSNType" use="optional" />
+		<xsd:attribute name="SUBAPPALTABILE" type="simog:FlagSNType" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="FinanziamentoType">
+		<xsd:attribute name="ID_FINANZIAMENTO" type="simog:TipoFinanziamentoType" use="required"></xsd:attribute>
+		<xsd:attribute name="IMPORTO_FINANZIAMENTO" type="simog:ImportoType" use="required"></xsd:attribute>
+	</xsd:complexType>
+<!-- BUILD_130
+   <xsd:complexType name="LuogoNutsAggType">
+      <xsd:attribute name="LUOGO_NUTS" type="simog:LuogoNutsType" use="required"/>
+   </xsd:complexType>
+-->
+   <xsd:complexType name="DittaAusiliariaType">
+      <xsd:attribute name="FLAG_AVVALIMENTO" type="simog:FlagAvvalimentoType" use="required" /> 
+      <xsd:attribute name="CODICE_FISCALE_AGGIUDICATARIO" type="simog:CodFiscType" use="required" />
+      <xsd:attribute name="CODICE_STATO_AGGIUDICATARIO" type="simog:StatoEsteroType" use="required" />
+      <xsd:attribute name="CODICE_FISCALE_AUSILIARIA" type="simog:CodFiscType" use="required" />
+      <xsd:attribute name="CODICE_STATO_AUSILIARIA" type="simog:StatoEsteroType" use="required" />
+   </xsd:complexType>  
+   <xsd:complexType name="SchedaSottosogliaType">
+      <xsd:sequence>
+         <xsd:element name="Appalto" type="simog:SottoEsclusoType"/>
+         <xsd:element name="Condizioni" type="simog:CondizioneType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Aggiudicatari" type="simog:SoggAggiudicatarioType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Incaricati" type="simog:IncaricatoType" minOccurs="0" maxOccurs="unbounded"/>         
+<!-- BUILD_130
+         <xsd:element name="LuoghiNuts" type="simog:LuogoNutsAggType" minOccurs="0" maxOccurs="unbounded"/>
+-->
+<!-- inizio     is3031_RNFDBGL01Active          -->
+         <xsd:element name="CUPLOTTO" type="simog:CUPLOTTOType" minOccurs="0" maxOccurs="1"></xsd:element>
+<!-- fine    is3031_RNFDBGL01Active          -->
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="SchedaEsclusoType">
+      <xsd:sequence>
+         <xsd:element name="Appalto" type="simog:SottoEsclusoType"/>
+         <xsd:element name="Aggiudicatari" type="simog:SoggAggiudicatarioType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Incaricati" type="simog:IncaricatoType" minOccurs="0" maxOccurs="unbounded"/>         
+<!-- BUILD_130
+         <xsd:element name="LuoghiNuts" type="simog:LuogoNutsType" minOccurs="0" maxOccurs="unbounded"/>
+-->
+<!-- inizio     is3031_RNFDBGL01Active          -->
+         <xsd:element name="CUPLOTTO" type="simog:CUPLOTTOType" minOccurs="0" maxOccurs="1"></xsd:element>
+<!-- fine    is3031_RNFDBGL01Active          -->
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="SottoEsclusoType">
+		<xsd:attribute name="LUOGO_ISTAT" type="simog:LuogoIstatType" use="optional"/>
+      <xsd:attribute name="LUOGO_NUTS" use="optional" type="simog:LuogoNutsType"/>
+      <xsd:attribute name="CUP" type="simog:CupType" use="optional"></xsd:attribute>
+      <xsd:attribute name="IMPORTO_COMPLESSIVO"  type="simog:ImportoType" use="required" />
+      <xsd:attribute name="IMPORTO_DISPOSIZIONE" type="simog:ImportoType" use="required"></xsd:attribute>
+      <xsd:attribute name="ID_SCELTA_CONTRAENTE" type="simog:SceltaContraenteType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ASTA_ELETTRONICA" type="simog:FlagSNType" use="required" />
+      <xsd:attribute name="PERC_RIBASSO_AGG" type="simog:PercentualeType" use="optional"/>
+      <xsd:attribute name="PERC_OFF_AUMENTO" type="simog:PercentualeType" use="optional"/>
+      <xsd:attribute name="IMPORTO_AGGIUDICAZIONE" type="simog:ImportoType" use="required" />
+      <xsd:attribute name="DATA_AGGIUDICAZIONE" type="simog:DbDateType" use="optional"></xsd:attribute>
+      <xsd:attribute name="DATA_STIPULA" type="simog:DbDateType" use="optional"></xsd:attribute>
+      <xsd:attribute name="TERMINE_CONTRATTUALE" type="simog:DbDateType" use="optional"></xsd:attribute>
+      <xsd:attribute name="DURATA_CONTRATTUALE" type="simog:InteroType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>     
+      <!-- PP 3.02.1.6 aggiunto nuovo campo -->
+      <xsd:attribute name="IMPORTO_ATTUAZIONE_SICUREZZA" type="simog:ImportoType" use="optional" />
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>        
+      <!-- is3028_RFWEBSC00Active (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="ORIGINE_SCHEDA" type="simog:OrigineSchedaType" use="optional"/>   
+      <!--   is3031_RNFDBGL01Active xx -->
+      <xsd:attribute name="FLAG_CUP" type="simog:FlagSNType" use="optional" />       
+   </xsd:complexType>
+   <xsd:complexType name="AppaltoAdesioneType">
+		<xsd:attribute name="LUOGO_ISTAT" type="simog:LuogoIstatType" use="optional"/>
+      <xsd:attribute name="LUOGO_NUTS" use="optional" type="simog:LuogoNutsType"/>
+      <xsd:attribute name="COD_STRUMENTO" type="simog:TipoStrumentoType" use="optional"/>
+      <xsd:attribute name="IMPORTO_LAVORI" type="simog:ImportoType" use="required"/>
+      <xsd:attribute name="IMPORTO_SERVIZI" type="simog:ImportoType" use="required"/>
+      <xsd:attribute name="IMPORTO_FORNITURE" type="simog:ImportoType" use="required"/>
+      <xsd:attribute name="PERC_RIBASSO_AGG" type="simog:PercentualeType" use="optional"/>
+      <xsd:attribute name="PERC_OFF_AUMENTO" type="simog:PercentualeType" use="optional"/>
+      <xsd:attribute name="IMPORTO_AGGIUDICAZIONE" type="simog:ImportoType" use="required"/>
+      <xsd:attribute name="DATA_AGGIUDICAZIONE" type="simog:DbDateType" use="required"/> 
+      <xsd:attribute name="FLAG_RICH_SUBAPPALTO" type="simog:FlagSNType" use="required"/>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"/>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"/>
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>       
+      <!-- is3028_RFWEBSC00Active (da non usare per il trasferimento dati) -->
+      <xsd:attribute name="ORIGINE_SCHEDA" type="simog:OrigineSchedaType" use="optional"/>
+	  <xsd:attribute name="IMPORTO_ATTUAZIONE_SICUREZZA" type="simog:ImportoType" use="optional" />
+	  <xsd:attribute name="IMPORTO_PROGETTAZIONE" type="simog:ImportoType" use="optional"></xsd:attribute>
+      <xsd:attribute name="IMP_NON_ASSOG" type="simog:ImportoType" use="optional" />
+   </xsd:complexType>
+   <xsd:complexType name="AdesioneType">
+      <xsd:sequence>
+         <xsd:element name="Appalto" type="simog:AppaltoAdesioneType"/>
+         <xsd:element name="Finanziamenti" type="simog:FinanziamentoType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Aggiudicatari" type="simog:SoggAggiudicatarioType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Incaricati" type="simog:IncaricatoType" minOccurs="0" maxOccurs="unbounded"/>         
+         <xsd:element name="DitteAusiliarie" type="simog:DittaAusiliariaType" minOccurs="0" maxOccurs="unbounded"/>         
+      </xsd:sequence>
+   </xsd:complexType> 
+   <xsd:complexType name="DatiStipulaType">
+      <xsd:sequence>
+         <xsd:element name="PubblicazioneEsito" type="simog:PubblicazioneType"/>
+         <xsd:element name="Stipula" type="simog:StipulaType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="StipulaType">
+      <xsd:attribute name="DATA_STIPULA" type="simog:DbDateType" use="optional"/>
+      <xsd:attribute name="DATA_DECORRRENZA" type="simog:DbDateType" use="optional"/>
+      <xsd:attribute name="DATA_SCADENZA" type="simog:DbDateType" use="optional"/>     
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>   
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>                
+   </xsd:complexType>
+</xsd:schema>
