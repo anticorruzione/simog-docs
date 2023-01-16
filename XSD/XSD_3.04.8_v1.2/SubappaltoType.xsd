@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<xsd:annotation>
+    	<xsd:documentation>Scheda SubAppalti</xsd:documentation>
+    </xsd:annotation>
+    <xsd:include schemaLocation="SimpleTypes.xsd"/>
+    <xsd:include schemaLocation="ListTypes.xsd"/>
+    <xsd:complexType name="SubappaltoType">
+		  <!-- 3.04.3 -->
+	  <!-- Insieme di ditte subappaltatrici appartenente a un raggruppamento di imprese -->
+	  <!-- Devono essere definite solamente le impresente mandanti in quanto la mandataria e' definita nell'attributo CF_DITTA -->
+	  <xsd:sequence>  
+	     <xsd:element name="Subappaltatore" type="simog:SoggSubappaltatoreType" minOccurs="0" maxOccurs="unbounded"/>
+	  </xsd:sequence>	
+	  <!-- 3.04.3 -->
+    	<xsd:attribute name="CF_DITTA" use="required" type="simog:CodFiscType"/>
+    	<xsd:attribute name="DATA_AUTORIZZAZIONE" use="optional" type="simog:DbDateType"/>
+    	<xsd:attribute name="OGGETTO_SUBAPPALTO" use="optional">
+    		<xsd:simpleType>
+    			<xsd:restriction base="xsd:string">
+    				<xsd:maxLength value="1000"></xsd:maxLength>
+    			</xsd:restriction>
+    		</xsd:simpleType>
+    	</xsd:attribute>
+    	<xsd:attribute name="IMPORTO_PRESUNTO" use="required" type="simog:ImportoType"/>
+    	<xsd:attribute name="IMPORTO_EFFETTIVO" use="optional" type="simog:ImportoType"/>
+    	<xsd:attribute name="ID_CATEGORIA" type="simog:CategoriaType"/>  	
+    	<xsd:attribute name="ID_CPV" use="required">
+    		<xsd:simpleType>
+    			<xsd:restriction base="xsd:string" >
+    				<xsd:maxLength value="12"></xsd:maxLength>
+    			</xsd:restriction>
+    		</xsd:simpleType>
+    	</xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>           
+      <xsd:attribute name="CODICE_FISCALE_AGGIUDICATARIO" type="simog:CodFiscType" use="optional" />
+      <xsd:attribute name="CODICE_STATO" type="simog:StatoEsteroType" use="optional" />
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>      	  
+    </xsd:complexType>
+	<!-- Inizio 3.04.3 -->
+	<xsd:complexType name="SoggSubappaltatoreType">
+		<xsd:attribute name="CODICE_FISCALE_SUBAPPALTATORE" type="simog:CodFiscType" use="required" />
+	</xsd:complexType>
+	<!-- fine 3.04.3 -->
+	
+    <xsd:complexType name="SubappaltiType">
+    	<xsd:sequence>   
+			<xsd:element name="Subappalto" type="simog:SubappaltoType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>	
+	</xsd:complexType>	
+</xsd:schema>

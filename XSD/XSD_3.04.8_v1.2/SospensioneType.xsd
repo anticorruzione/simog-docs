@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:simog="xmlbeans.massload.simog.avlp.it"
+	targetNamespace="xmlbeans.massload.simog.avlp.it"
+	elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<xsd:annotation>
+    	<xsd:documentation>Scheda Sospensione</xsd:documentation>
+    </xsd:annotation>
+    <!-- include dei tipi semplici -->
+    <xsd:include schemaLocation="SimpleTypes.xsd"/>
+    <xsd:include schemaLocation="ListTypes.xsd"/>
+    <xsd:complexType name="SospensioneType">
+    	<xsd:attribute name="DATA_VERB_SOSP" use="required" type="simog:DbDateType"/>
+    	<xsd:attribute name="DATA_VERB_RIPR" use="optional" type="simog:DbDateType"/>
+    	<xsd:attribute name="ID_MOTIVO_SOSP" use="required" type="simog:MotivoSospensioneType"/>
+    	<xsd:attribute name="FLAG_SUPERO_TEMPO" use="required" type="simog:FlagSNType"/>
+    	<xsd:attribute name="FLAG_RISERVE" use="required" type="simog:FlagSNType"/>
+    	<xsd:attribute name="FLAG_VERBALE" use="required" type="simog:FlagSNType"/>		
+      <xsd:attribute name="ID_SCHEDA_LOCALE" type="simog:IdSchedaType" use="optional"></xsd:attribute>
+      <xsd:attribute name="ID_SCHEDA_SIMOG" type="simog:IdSchedaType" use="optional"></xsd:attribute>     
+      <!-- is3028_RFWSGL01Active -->
+      <xsd:attribute name="ID_STATO_SCHEDA" type="simog:StatoSchedaType" use="optional"/>                         
+	</xsd:complexType>
+    <xsd:complexType name="SospensioniType">
+    	<xsd:sequence>   
+			<xsd:element name="Sospensione" type="simog:SospensioneType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>	
+	</xsd:complexType>		
+</xsd:schema>
