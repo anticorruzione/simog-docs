@@ -1,0 +1,1268 @@
+<definitions name='LoaderAppaltoWSAVCPASSService' targetNamespace='xmlbeans.massload.simog.avlp.it' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='xmlbeans.massload.simog.avlp.it' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='xmlbeans.massload.simog.avlp.it' version='1.0' xmlns:tns='xmlbeans.massload.simog.avlp.it' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='FeedBack'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element name='InfoFlusso' type='tns:FlussoType'/>
+      <xs:element maxOccurs='unbounded' minOccurs='0' name='AnomalieSchede'>
+       <xs:complexType>
+        <xs:complexContent>
+         <xs:extension base='tns:AnomScheda_AType'>
+          <xs:sequence/>
+         </xs:extension>
+        </xs:complexContent>
+       </xs:complexType>
+      </xs:element>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='TrasferimentoDati'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element name='InfoTrasferimento' type='tns:TrasferimentoType'/>
+      <xs:element maxOccurs='unbounded' minOccurs='0' name='Schede' type='tns:DatiAggiudicazioneType'/>
+      <xs:element maxOccurs='unbounded' minOccurs='0' name='SchedeEliminate' type='tns:RecIdSchedaElimType'/>
+      <xs:element maxOccurs='unbounded' minOccurs='0' name='VariazioniAnag' type='tns:VarAnagType'/>
+      <xs:element minOccurs='0' name='Responsabili' type='tns:ResponsabiliType'/>
+      <xs:element minOccurs='0' name='Aggiudicatari' type='tns:AggiudicatariType'/>
+      <xs:element minOccurs='0' name='VariazioniSA' type='tns:VariazioneSAType'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='loaderAppaltoAVCPASS' type='tns:loaderAppaltoAVCPASS'/>
+   <xs:element name='loaderAppaltoAVCPASSResponse' type='tns:loaderAppaltoAVCPASSResponse'/>
+   <xs:complexType name='loaderAppaltoAVCPASS'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='ticket' type='xs:string'/>
+     <xs:element minOccurs='0' name='indexCollaborazione' type='xs:string'/>
+     <xs:element minOccurs='0' name='trasferimentoDati'>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name='InfoTrasferimento' type='tns:TrasferimentoType'/>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='Schede' type='tns:DatiAggiudicazioneType'/>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='SchedeEliminate' type='tns:RecIdSchedaElimType'/>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='VariazioniAnag' type='tns:VarAnagType'/>
+        <xs:element minOccurs='0' name='Responsabili' type='tns:ResponsabiliType'/>
+        <xs:element minOccurs='0' name='Aggiudicatari' type='tns:AggiudicatariType'/>
+        <xs:element minOccurs='0' name='VariazioniSA' type='tns:VariazioneSAType'/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='TrasferimentoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_CREAZIONE_FLUSSO' use='required'/>
+    <xs:attribute ref='tns:NUM_SCHEDE' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='DbDateType'>
+    <xs:restriction base='xs:dateTime'/>
+   </xs:simpleType>
+   <xs:simpleType name='InteroType'>
+    <xs:restriction base='xs:int'/>
+   </xs:simpleType>
+   <xs:complexType name='DatiAggiudicazioneType'>
+    <xs:sequence>
+     <xs:element name='DatiComuni' type='tns:DatiComuniType'/>
+     <xs:element minOccurs='0' name='Pubblicazione' type='tns:PubblicazioneType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='SchedaCompleta' type='tns:SchedaCompletaType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='DatiComuniType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CIG' use='required'/>
+    <xs:attribute ref='tns:FLAG_ENTE_SPECIALE' use='required'/>
+    <xs:attribute ref='tns:TIPO_CONTRATTO' use='required'/>
+    <xs:attribute ref='tns:ID_CATEG_SA'/>
+    <xs:attribute ref='tns:CF_AMM_AGENTE'/>
+    <xs:attribute ref='tns:DEN_AMM_AGENTE'/>
+    <xs:attribute ref='tns:CF_AMM' use='required'/>
+    <xs:attribute ref='tns:DEN_AMM' use='required'/>
+    <xs:attribute ref='tns:CF_SA' use='required'/>
+    <xs:attribute ref='tns:DEN_SA' use='required'/>
+    <xs:attribute ref='tns:CODICE_CC' use='required'/>
+    <xs:attribute ref='tns:DENOM_CC' use='required'/>
+    <xs:attribute ref='tns:ID_TIPOLOGIA_SA'/>
+    <xs:attribute ref='tns:FLAG_SA_AGENTE' use='required'/>
+    <xs:attribute ref='tns:CF_RUP' use='required'/>
+    <xs:attribute ref='tns:ESITO_PROCEDURA'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:TIPOLOGIA_PROCEDURA'/>
+    <xs:attribute ref='tns:FLAG_ACC_QUADRO'/>
+    <xs:attribute ref='tns:DURATA_ACCQUADRO_CONVENZIONE'/>
+    <xs:attribute ref='tns:FLAG_CENTRALE_STIPULA'/>
+    <xs:attribute ref='tns:MODO_REALIZZAZIONE'/>
+    <xs:attribute ref='tns:FLAG_ESCLUSO'/>
+    <xs:attribute ref='tns:ID_ESCLUSIONE'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+    <xs:attribute ref='tns:ORIGINE_SCHEDA'/>
+    <xs:attribute ref='tns:PROVV_PRESA_CARICO'/>
+   </xs:complexType>
+   <xs:simpleType name='CigType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='CategSAType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='CodFiscType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='TipologiaSAType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='EsitoProceduraType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='IdSchedaType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='TipologiaProceduraType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ModoRealizzazioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ArtEsclusioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='StatoSchedaType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='OrigineSchedaType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='PubblicazioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_GUCE'/>
+    <xs:attribute ref='tns:DATA_GURI'/>
+    <xs:attribute ref='tns:DATA_ALBO'/>
+    <xs:attribute ref='tns:DATA_BORE'/>
+    <xs:attribute ref='tns:QUOTIDIANI_NAZ'/>
+    <xs:attribute ref='tns:QUOTIDIANI_REG'/>
+    <xs:attribute ref='tns:PERIODICI'/>
+    <xs:attribute ref='tns:PROFILO_COMMITTENTE'/>
+    <xs:attribute ref='tns:SITO_MINISTERO_INF_TRASP'/>
+    <xs:attribute ref='tns:SITO_OSSERVATORIO_CP'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:NUMERO_GUCE'/>
+    <xs:attribute ref='tns:NUMERO_GURI'/>
+    <xs:attribute ref='tns:NUMERO_BORE'/>
+    <xs:attribute ref='tns:LINK_SITO'/>
+    <xs:attribute ref='tns:LINK_AFFIDAMENTO_DIRETTO'/>
+    <xs:attribute ref='tns:FLAG_BENICULT'/>
+    <xs:attribute ref='tns:FLAG_SOSPESO'/>
+   </xs:complexType>
+   <xs:simpleType name='CuiType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='SchedaCompletaType'>
+    <xs:sequence>
+     <xs:element name='CUI' type='tns:CuiType'/>
+     <xs:element minOccurs='0' name='Aggiudicazione' type='tns:AggiudicazioneType'/>
+     <xs:element minOccurs='0' name='Sottosoglia' type='tns:SchedaSottosogliaType'/>
+     <xs:element minOccurs='0' name='Escluso' type='tns:SchedaEsclusoType'/>
+     <xs:element minOccurs='0' name='Adesione' type='tns:AdesioneType'/>
+     <xs:element minOccurs='0' name='DatiInizio' type='tns:DatiInizioType'/>
+     <xs:element minOccurs='0' name='DatiStipula' type='tns:DatiStipulaType'/>
+     <xs:element minOccurs='0' name='DatiAvanzamenti' type='tns:AvanzamentiType'/>
+     <xs:element minOccurs='0' name='DatiConclusione' type='tns:ConclusioneType'/>
+     <xs:element minOccurs='0' name='DatiCollaudo' type='tns:DatiCollaudoType'/>
+     <xs:element minOccurs='0' name='DatiRitardi' type='tns:RitardiType'/>
+     <xs:element minOccurs='0' name='DatiAccordi' type='tns:AccordiBonariType'/>
+     <xs:element minOccurs='0' name='DatiSospensioni' type='tns:SospensioniType'/>
+     <xs:element minOccurs='0' name='DatiVarianti' type='tns:VariantiType'/>
+     <xs:element minOccurs='0' name='DatiSubappalti' type='tns:SubappaltiType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AggiudicazioneType'>
+    <xs:sequence>
+     <xs:element name='Appalto' type='tns:AppaltoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='TipiAppaltoLav' type='tns:TipiAppaltoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='TipiAppaltoForn' type='tns:TipiAppaltoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Condizioni' type='tns:CondizioneType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Requisiti' type='tns:RequisitoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Finanziamenti' type='tns:FinanziamentoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatari' type='tns:SoggAggiudicatarioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='DitteAusiliarie' type='tns:DittaAusiliariaType'/>
+     <xs:element minOccurs='0' name='CUPLOTTO' type='tns:CUPLOTTOType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AppaltoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:PROCEDURA_ACC' use='required'/>
+    <xs:attribute ref='tns:PREINFORMAZIONE' use='required'/>
+    <xs:attribute ref='tns:TERMINE_RIDOTTO' use='required'/>
+    <xs:attribute ref='tns:ID_MODO_INDIZIONE'/>
+    <xs:attribute ref='tns:ID_MODO_GARA'/>
+    <xs:attribute ref='tns:NUM_IMPRESE_INVITATE' use='required'/>
+    <xs:attribute ref='tns:NUM_IMPRESE_RICHIEDENTI'/>
+    <xs:attribute ref='tns:NUM_IMPRESE_OFFERENTI' use='required'/>
+    <xs:attribute ref='tns:NUM_OFFERTE_AMMESSE' use='required'/>
+    <xs:attribute ref='tns:DATA_VERB_AGGIUDICAZIONE' use='required'/>
+    <xs:attribute ref='tns:DATA_SCADENZA_RICHIESTA_INVITO'/>
+    <xs:attribute ref='tns:DATA_SCADENZA_PRES_OFFERTA'/>
+    <xs:attribute ref='tns:IMPORTO_AGGIUDICAZIONE' use='required'/>
+    <xs:attribute ref='tns:ID_SCELTA_CONTRAENTE'/>
+    <xs:attribute ref='tns:IMPORTO_LAVORI' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_SERVIZI' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_FORNITURE' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_ATTUAZIONE_SICUREZZA' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_DISPOSIZIONE' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_PROGETTAZIONE' use='required'/>
+    <xs:attribute ref='tns:IMP_NON_ASSOG'/>
+    <xs:attribute ref='tns:SISTEMA_QUALIFICAZIONE'/>
+    <xs:attribute ref='tns:CRITERI_SELEZIONE_STABILITI_SA'/>
+    <xs:attribute ref='tns:ID_TIPO_PRESTAZIONE' use='required'/>
+    <xs:attribute ref='tns:CUP' use='required'/>
+    <xs:attribute ref='tns:FLAG_ACCORDO_QUADRO'/>
+    <xs:attribute ref='tns:LUOGO_ISTAT'/>
+    <xs:attribute ref='tns:LUOGO_NUTS'/>
+    <xs:attribute ref='tns:ASTA_ELETTRONICA' use='required'/>
+    <xs:attribute ref='tns:PERC_RIBASSO_AGG'/>
+    <xs:attribute ref='tns:PERC_OFF_AUMENTO'/>
+    <xs:attribute ref='tns:DATA_INVITO'/>
+    <xs:attribute ref='tns:NUM_MANIF_INTERESSE' use='required'/>
+    <xs:attribute ref='tns:DATA_MANIF_INTERESSE'/>
+    <xs:attribute ref='tns:FLAG_RICH_SUBAPPALTO' use='required'/>
+    <xs:attribute ref='tns:NUM_OFFERTE_ESCLUSE' use='required'/>
+    <xs:attribute ref='tns:OFFERTA_MASSIMO'/>
+    <xs:attribute ref='tns:OFFERTA_MINIMA'/>
+    <xs:attribute ref='tns:VAL_SOGLIA_ANOMALIA'/>
+    <xs:attribute ref='tns:NUM_OFFERTE_FUORI_SOGLIA' use='required'/>
+    <xs:attribute ref='tns:NUM_IMP_ESCL_INSUF_GIUST' use='required'/>
+    <xs:attribute ref='tns:COD_STRUMENTO'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:OPERE_URBANIZ_SCOMPUTO'/>
+    <xs:attribute ref='tns:MODALITA_RIAGGIUDICAZIONE'/>
+    <xs:attribute ref='tns:CODICE_CONTRATTO'/>
+    <xs:attribute ref='tns:FLAG_AGGIUD_PRINCIPALE'/>
+    <xs:attribute ref='tns:PROG_CUI_RIAGGIUDICATO'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+    <xs:attribute ref='tns:ORIGINE_SCHEDA'/>
+    <xs:attribute ref='tns:FLAG_CUP'/>
+    <xs:attribute ref='tns:RELAZIONE_UNICA'/>
+   </xs:complexType>
+   <xs:simpleType name='ModoIndizioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ModoGaraType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ImportoType'>
+    <xs:restriction base='xs:decimal'/>
+   </xs:simpleType>
+   <xs:simpleType name='SceltaContraenteType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='TipoPrestazioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='CupType'>
+    <xs:restriction base='xs:string'>
+		<xs:maxLength value="15" />
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='LuogoIstatType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='LuogoNutsType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='PercentualeType'>
+    <xs:restriction base='xs:decimal'/>
+   </xs:simpleType>
+   <xs:simpleType name='TipoStrumentoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ModoRiaggiudType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='TipiAppaltoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_APPALTO' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='TipoAppaltoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='CondizioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_CONDIZIONE' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='CondizioneAggType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='RequisitoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_CATEGORIA' use='required'/>
+    <xs:attribute ref='tns:CLASSE_IMPORTO' use='required'/>
+    <xs:attribute ref='tns:PREVALENTE'/>
+    <xs:attribute ref='tns:SCORPORABILE'/>
+    <xs:attribute ref='tns:SUBAPPALTABILE'/>
+   </xs:complexType>
+   <xs:simpleType name='CategoriaType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='ClasseImportoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='FinanziamentoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_FINANZIAMENTO' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_FINANZIAMENTO' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='TipoFinanziamentoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='SoggAggiudicatarioType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_TIPOAGG' use='required'/>
+    <xs:attribute ref='tns:RUOLO'/>
+    <xs:attribute ref='tns:FLAG_AVVALIMENTO' use='required'/>
+    <xs:attribute ref='tns:CF_AUSILIARIA'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AGGIUDICATARIO' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO' use='required'/>
+    <xs:attribute ref='tns:ID_GRUPPO'/>
+    <xs:attribute ref='tns:PERC_RIBASSO_AGG'/>
+    <xs:attribute ref='tns:PERC_OFF_AUMENTO'/>
+    <xs:attribute ref='tns:IMPORTO_AGGIUDICAZIONE'/>
+   </xs:complexType>
+   <xs:simpleType name='TipoAggiudicatarioType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='RuoloAggiudicatarioType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='FlagAvvalimentoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='StatoEsteroType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='InteroType99'>
+    <xs:restriction base='xs:int'/>
+   </xs:simpleType>
+   <xs:complexType name='IncaricatoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:SEZIONE' use='required'/>
+    <xs:attribute ref='tns:ID_RUOLO' use='required'/>
+    <xs:attribute ref='tns:CIG_PROG_ESTERNA'/>
+    <xs:attribute ref='tns:DATA_AFF_PROG_ESTERNA'/>
+    <xs:attribute ref='tns:DATA_CONS_PROG_ESTERNA'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_RESPONSABILE' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO'/>
+    <xs:attribute ref='tns:PERSONA_GIURIDICA'/>
+    <xs:attribute ref='tns:ID_GRUPPO_INCARICATO'/>
+    <xs:attribute ref='tns:MANDANTE'/>
+   </xs:complexType>
+   <xs:simpleType name='RuoloResponsabileType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='DittaAusiliariaType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:FLAG_AVVALIMENTO' use='required'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AGGIUDICATARIO' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO_AGGIUDICATARIO' use='required'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AUSILIARIA' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO_AUSILIARIA' use='required'/>
+   </xs:complexType>
+   <xs:complexType name='CUPLOTTOType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='CODICICUP' type='tns:DatiCUPType'/>
+    </xs:sequence>
+    <xs:attribute ref='tns:CIG'/>
+   </xs:complexType>
+   <xs:complexType name='DatiCUPType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CUP' use='required'/>
+    <xs:attribute ref='tns:ID_RICHIESTA'/>
+    <xs:attribute ref='tns:DATI_DIPE'/>
+    <xs:attribute ref='tns:VALIDO'/>
+    <xs:attribute ref='tns:OK_UTENTE'/>
+    <xs:attribute ref='tns:TEMATICA_PNRR'/>
+   </xs:complexType>
+   <xs:simpleType name='LongType'>
+    <xs:restriction base='xs:long'/>
+   </xs:simpleType>
+   <xs:complexType name='SchedaSottosogliaType'>
+    <xs:sequence>
+     <xs:element name='Appalto' type='tns:SottoEsclusoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Condizioni' type='tns:CondizioneType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatari' type='tns:SoggAggiudicatarioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+     <xs:element minOccurs='0' name='CUPLOTTO' type='tns:CUPLOTTOType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SottoEsclusoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:LUOGO_ISTAT'/>
+    <xs:attribute ref='tns:LUOGO_NUTS'/>
+    <xs:attribute ref='tns:CUP'/>
+    <xs:attribute ref='tns:IMPORTO_COMPLESSIVO' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_DISPOSIZIONE' use='required'/>
+    <xs:attribute ref='tns:ID_SCELTA_CONTRAENTE'/>
+    <xs:attribute ref='tns:ASTA_ELETTRONICA' use='required'/>
+    <xs:attribute ref='tns:PERC_RIBASSO_AGG'/>
+    <xs:attribute ref='tns:PERC_OFF_AUMENTO'/>
+    <xs:attribute ref='tns:IMPORTO_AGGIUDICAZIONE' use='required'/>
+    <xs:attribute ref='tns:DATA_AGGIUDICAZIONE'/>
+    <xs:attribute ref='tns:DATA_STIPULA'/>
+    <xs:attribute ref='tns:TERMINE_CONTRATTUALE'/>
+    <xs:attribute ref='tns:DURATA_CONTRATTUALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:IMPORTO_ATTUAZIONE_SICUREZZA'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+    <xs:attribute ref='tns:ORIGINE_SCHEDA'/>
+    <xs:attribute ref='tns:FLAG_CUP'/>
+   </xs:complexType>
+   <xs:complexType name='SchedaEsclusoType'>
+    <xs:sequence>
+     <xs:element name='Appalto' type='tns:SottoEsclusoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatari' type='tns:SoggAggiudicatarioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+     <xs:element minOccurs='0' name='CUPLOTTO' type='tns:CUPLOTTOType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AdesioneType'>
+    <xs:sequence>
+     <xs:element name='Appalto' type='tns:AppaltoAdesioneType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Finanziamenti' type='tns:FinanziamentoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatari' type='tns:SoggAggiudicatarioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='DitteAusiliarie' type='tns:DittaAusiliariaType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AppaltoAdesioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:LUOGO_ISTAT'/>
+    <xs:attribute ref='tns:LUOGO_NUTS'/>
+    <xs:attribute ref='tns:COD_STRUMENTO'/>
+    <xs:attribute ref='tns:IMPORTO_LAVORI' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_SERVIZI' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_FORNITURE' use='required'/>
+    <xs:attribute ref='tns:PERC_RIBASSO_AGG'/>
+    <xs:attribute ref='tns:PERC_OFF_AUMENTO'/>
+    <xs:attribute ref='tns:IMPORTO_AGGIUDICAZIONE' use='required'/>
+    <xs:attribute ref='tns:DATA_AGGIUDICAZIONE' use='required'/>
+    <xs:attribute ref='tns:FLAG_RICH_SUBAPPALTO' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+    <xs:attribute ref='tns:ORIGINE_SCHEDA'/>
+    <xs:attribute ref='tns:IMPORTO_ATTUAZIONE_SICUREZZA'/>
+    <xs:attribute ref='tns:IMPORTO_PROGETTAZIONE'/>
+    <xs:attribute ref='tns:IMP_NON_ASSOG'/>
+   </xs:complexType>
+   <xs:complexType name='DatiInizioType'>
+    <xs:sequence>
+     <xs:element name='PubblicazioneEsito' type='tns:PubblicazioneType'/>
+     <xs:element name='Inizio' type='tns:InizioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Posizioni' type='tns:PosizioneType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='InizioType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_STIPULA'/>
+    <xs:attribute ref='tns:DATA_ESECUTIVITA'/>
+    <xs:attribute ref='tns:IMPORTO_CAUZIONE' use='required'/>
+    <xs:attribute ref='tns:DATA_INI_PROG_ESEC'/>
+    <xs:attribute ref='tns:DATA_APP_PROG_ESEC'/>
+    <xs:attribute ref='tns:FLAG_FRAZIONATA' use='required'/>
+    <xs:attribute ref='tns:DATA_VERBALE_CONS'/>
+    <xs:attribute ref='tns:DATA_VERBALE_DEF'/>
+    <xs:attribute ref='tns:FLAG_RISERVA' use='required'/>
+    <xs:attribute ref='tns:DATA_VERB_INIZIO'/>
+    <xs:attribute ref='tns:DATA_TERMINE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:complexType name='PosizioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AGGIUDICATARIO' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO' use='required'/>
+    <xs:attribute ref='tns:CODICE_INPS'/>
+    <xs:attribute ref='tns:CODICE_INAIL'/>
+    <xs:attribute ref='tns:CODICE_CASSA'/>
+   </xs:complexType>
+   <xs:complexType name='DatiStipulaType'>
+    <xs:sequence>
+     <xs:element name='PubblicazioneEsito' type='tns:PubblicazioneType'/>
+     <xs:element name='Stipula' type='tns:StipulaType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='StipulaType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_STIPULA'/>
+    <xs:attribute ref='tns:DATA_DECORRRENZA'/>
+    <xs:attribute ref='tns:DATA_SCADENZA'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:complexType name='AvanzamentiType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='Avanzamento' type='tns:AvanzamentoType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AvanzamentoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:FLAG_PAGAMENTO' use='required'/>
+    <xs:attribute ref='tns:DATA_ANTICIPAZIONE'/>
+    <xs:attribute ref='tns:IMPORTO_ANTICIPAZIONE'/>
+    <xs:attribute ref='tns:DATA_RAGGIUNGIMENTO' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_SAL' use='required'/>
+    <xs:attribute ref='tns:DATA_CERTIFICATO'/>
+    <xs:attribute ref='tns:IMPORTO_CERTIFICATO'/>
+    <xs:attribute ref='tns:FLAG_RITARDO' use='required'/>
+    <xs:attribute ref='tns:NUM_GIORNI_SCOST'/>
+    <xs:attribute ref='tns:NUM_GIORNI_PROROGA'/>
+    <xs:attribute ref='tns:DENOM_AVANZAMENTO'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:simpleType name='FlagPagamentoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='ConclusioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_MOTIVO_INTERR'/>
+    <xs:attribute ref='tns:ID_MOTIVO_RISOL'/>
+    <xs:attribute ref='tns:DATA_RISOLUZIONE'/>
+    <xs:attribute ref='tns:FLAG_ONERI'/>
+    <xs:attribute ref='tns:ONERI_RISOLUZIONE'/>
+    <xs:attribute ref='tns:FLAG_POLIZZA'/>
+    <xs:attribute ref='tns:DATA_ULTIMAZIONE'/>
+    <xs:attribute ref='tns:NUM_INFORTUNI' use='required'/>
+    <xs:attribute ref='tns:NUM_INF_PERM' use='required'/>
+    <xs:attribute ref='tns:NUM_INF_MORT' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:TERMINE_CONTRATT_ULTIMAZIONE'/>
+    <xs:attribute ref='tns:NUM_GIORNI_PROROGA'/>
+    <xs:attribute ref='tns:DATA_VERB_CONSEGNA_AVVIO'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:simpleType name='MotivoInterruzioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='MotivoRisoluzioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='FlagOneriType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='DatiCollaudoType'>
+    <xs:sequence>
+     <xs:element name='Collaudo' type='tns:CollaudoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Incaricati' type='tns:IncaricatoType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='CollaudoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_REGOLARE_ESEC'/>
+    <xs:attribute ref='tns:DATA_COLLAUDO_STAT'/>
+    <xs:attribute ref='tns:MODO_COLLAUDO'/>
+    <xs:attribute ref='tns:DATA_NOMINA_COLL'/>
+    <xs:attribute ref='tns:DATA_INIZIO_OPER'/>
+    <xs:attribute ref='tns:DATA_CERT_COLLAUDO'/>
+    <xs:attribute ref='tns:DATA_DELIBERA'/>
+    <xs:attribute ref='tns:ESITO_COLLAUDO' use='required'/>
+    <xs:attribute ref='tns:IMP_FINALE_LAVORI'/>
+    <xs:attribute ref='tns:IMP_FINALE_SERVIZI'/>
+    <xs:attribute ref='tns:IMP_FINALE_FORNIT'/>
+    <xs:attribute ref='tns:IMP_FINALE_SECUR'/>
+    <xs:attribute ref='tns:IMP_PROGETTAZIONE'/>
+    <xs:attribute ref='tns:IMP_DISPOSIZIONE'/>
+    <xs:attribute ref='tns:AMM_NUM_DEFINITE'/>
+    <xs:attribute ref='tns:AMM_NUM_DADEF'/>
+    <xs:attribute ref='tns:AMM_IMPORTO_RICH'/>
+    <xs:attribute ref='tns:AMM_IMPORTO_DEF'/>
+    <xs:attribute ref='tns:ARB_NUM_DEFINITE'/>
+    <xs:attribute ref='tns:ARB_NUM_DADEF'/>
+    <xs:attribute ref='tns:ARB_IMPORTO_RICH'/>
+    <xs:attribute ref='tns:ARB_IMPORTO_DEF'/>
+    <xs:attribute ref='tns:GIU_NUM_DEFINITE'/>
+    <xs:attribute ref='tns:GIU_NUM_DADEF'/>
+    <xs:attribute ref='tns:GIU_IMPORTO_RICH'/>
+    <xs:attribute ref='tns:GIU_IMPORTO_DEF'/>
+    <xs:attribute ref='tns:TRA_NUM_DEFINITE'/>
+    <xs:attribute ref='tns:TRA_NUM_DADEF'/>
+    <xs:attribute ref='tns:TRA_IMPORTO_RICH'/>
+    <xs:attribute ref='tns:TRA_IMPORTO_DEF'/>
+    <xs:attribute ref='tns:LAVORI_ESTESI'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:simpleType name='FlagModoCollaudoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='RitardiType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='Ritardo' type='tns:RitardoType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='RitardoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_TERMINE' use='required'/>
+    <xs:attribute ref='tns:DATA_CONSEGNA'/>
+    <xs:attribute ref='tns:TIPO_COMUN' use='required'/>
+    <xs:attribute ref='tns:DURATA_SOSP' use='required'/>
+    <xs:attribute ref='tns:MOTIVO_SOSP'/>
+    <xs:attribute ref='tns:DATA_IST_RECESSO'/>
+    <xs:attribute ref='tns:FLAG_ACCOLTA'/>
+    <xs:attribute ref='tns:FLAG_TARDIVA' use='required'/>
+    <xs:attribute ref='tns:FLAG_RIPRESA' use='required'/>
+    <xs:attribute ref='tns:FLAG_RISERVA' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_SPESE'/>
+    <xs:attribute ref='tns:IMPORTO_ONERI'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:complexType name='AccordiBonariType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='AccordoBonario' type='tns:AccordoBonarioType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AccordoBonarioType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_ACCORDO' use='required'/>
+    <xs:attribute ref='tns:ONERI_DERIVANTI'/>
+    <xs:attribute ref='tns:NUM_RISERVE' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:complexType name='SospensioniType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='Sospensione' type='tns:SospensioneType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SospensioneType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_VERB_SOSP' use='required'/>
+    <xs:attribute ref='tns:DATA_VERB_RIPR'/>
+    <xs:attribute ref='tns:ID_MOTIVO_SOSP' use='required'/>
+    <xs:attribute ref='tns:FLAG_SUPERO_TEMPO' use='required'/>
+    <xs:attribute ref='tns:FLAG_RISERVE' use='required'/>
+    <xs:attribute ref='tns:FLAG_VERBALE' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:simpleType name='MotivoSospensioneType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='VariantiType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='Variante' type='tns:VarianteType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='VarianteType'>
+    <xs:sequence>
+     <xs:element name='Variante' type='tns:RecVarianteType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Motivi' type='tns:RecMotivoVarType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='RecVarianteType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_VERB_APPR' use='required'/>
+    <xs:attribute ref='tns:ALTRE_MOTIVAZIONI'/>
+    <xs:attribute ref='tns:IMP_RIDET_LAVORI'/>
+    <xs:attribute ref='tns:IMP_RIDET_SERVIZI'/>
+    <xs:attribute ref='tns:IMP_RIDET_FORNIT'/>
+    <xs:attribute ref='tns:IMP_SICUREZZA'/>
+    <xs:attribute ref='tns:IMP_PROGETTAZIONE'/>
+    <xs:attribute ref='tns:IMP_DISPOSIZIONE'/>
+    <xs:attribute ref='tns:ULTERIORI_SOMME'/>
+    <xs:attribute ref='tns:DATA_ATTO_AGGIUNTIVO'/>
+    <xs:attribute ref='tns:NUM_GIORNI_PROROGA'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+    <xs:attribute ref='tns:CIG_PROCEDURA'/>
+    <xs:attribute ref='tns:LINK_VARIANTI'/>
+    <xs:attribute ref='tns:ID_MOTIVO_REV_PREZZI'/>
+   </xs:complexType>
+   <xs:simpleType name='MotivoRevPrezziType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='RecMotivoVarType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_MOTIVO_VAR' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='MotivoVarianteType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='SubappaltiType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' name='Subappalto' type='tns:SubappaltoType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SubappaltoType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Subappaltatore' type='tns:SoggSubappaltatoreType'/>
+    </xs:sequence>
+    <xs:attribute ref='tns:CF_DITTA' use='required'/>
+    <xs:attribute ref='tns:DATA_AUTORIZZAZIONE'/>
+    <xs:attribute ref='tns:OGGETTO_SUBAPPALTO'/>
+    <xs:attribute ref='tns:IMPORTO_PRESUNTO' use='required'/>
+    <xs:attribute ref='tns:IMPORTO_EFFETTIVO'/>
+    <xs:attribute ref='tns:ID_CATEGORIA'/>
+    <xs:attribute ref='tns:ID_CPV' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AGGIUDICATARIO'/>
+    <xs:attribute ref='tns:CODICE_STATO'/>
+    <xs:attribute ref='tns:ID_STATO_SCHEDA'/>
+   </xs:complexType>
+   <xs:complexType name='SoggSubappaltatoreType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CODICE_FISCALE_SUBAPPALTATORE' use='required'/>
+   </xs:complexType>
+   <xs:complexType name='RecIdSchedaElimType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CIG' use='required'/>
+    <xs:attribute ref='tns:CUI' use='required'/>
+    <xs:attribute ref='tns:SCHEDA'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+   </xs:complexType>
+   <xs:complexType name='VarAnagType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='VariazioneAnag' type='tns:RecVarAnagType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='RecVarAnagType'>
+    <xs:sequence>
+     <xs:element name='MOTIVO' type='tns:MotiviVariazioneCOType'/>
+     <xs:element name='Riferimento' type='tns:RecIdSchedaElimType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Responsabili' type='tns:IncaricatoType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatari' type='tns:SoggAggiudicatarioType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='DitteAusiliarie' type='tns:DittaAusiliariaType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Posizioni' type='tns:PosizioneType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name='MotiviVariazioneCOType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='ResponsabiliType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Responsabile' type='tns:ResponsabileType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ResponsabileType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:SOGGETTO_ESTERO'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_RESPONSABILE' use='required'/>
+    <xs:attribute ref='tns:COGNOME' use='required'/>
+    <xs:attribute ref='tns:NOME' use='required'/>
+    <xs:attribute ref='tns:TELEFONO' use='required'/>
+    <xs:attribute ref='tns:EMAIL' use='required'/>
+    <xs:attribute ref='tns:FAX' use='required'/>
+    <xs:attribute ref='tns:INDIRIZZO' use='required'/>
+    <xs:attribute ref='tns:CAP' use='required'/>
+    <xs:attribute ref='tns:CODICE_ISTAT_COMUNE' use='required'/>
+   </xs:complexType>
+   <xs:complexType name='AggiudicatariType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Aggiudicatario' type='tns:AggiudicatarioType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AggiudicatarioType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:SOGGETTO_ESTERO' use='required'/>
+    <xs:attribute ref='tns:CODICE_STATO' use='required'/>
+    <xs:attribute ref='tns:CODICE_FISCALE_AGGIUDICATARIO' use='required'/>
+    <xs:attribute ref='tns:DENOMINAZIONE' use='required'/>
+    <xs:attribute ref='tns:COGNOME' use='required'/>
+    <xs:attribute ref='tns:NOME' use='required'/>
+    <xs:attribute ref='tns:CAMERA_COMMERCIO' use='required'/>
+    <xs:attribute ref='tns:PARTITA_IVA' use='required'/>
+    <xs:attribute ref='tns:CF_RAPPRESENTANTE' use='required'/>
+    <xs:attribute ref='tns:INDIRIZZO' use='required'/>
+    <xs:attribute ref='tns:CIVICO' use='required'/>
+    <xs:attribute ref='tns:CAP' use='required'/>
+    <xs:attribute ref='tns:CITTA' use='required'/>
+    <xs:attribute ref='tns:PROVINCIA' use='required'/>
+   </xs:complexType>
+   <xs:complexType name='VariazioneSAType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='VariazioneSA' type='tns:RecVariazioneSAType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='RecVariazioneSAType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:ID_GARA' use='required'/>
+    <xs:attribute ref='tns:MOTIVO' use='required'/>
+    <xs:attribute ref='tns:CF_AMMINISTRAZIONE' use='required'/>
+    <xs:attribute ref='tns:ID_CENTRO_COSTO' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='MotiviVariazioneSAType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='loaderAppaltoAVCPASSResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:ResponseLoaderAppalto'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ResponseLoaderAppalto'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='feedBack'>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name='InfoFlusso' type='tns:FlussoType'/>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='AnomalieSchede'>
+         <xs:complexType>
+          <xs:complexContent>
+           <xs:extension base='tns:AnomScheda_AType'>
+            <xs:sequence/>
+           </xs:extension>
+          </xs:complexContent>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='FlussoType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:DATA_ELABORAZIONE' use='required'/>
+    <xs:attribute ref='tns:NUM_ELABORATE' use='required'/>
+    <xs:attribute ref='tns:NUM_ERRORE' use='required'/>
+    <xs:attribute ref='tns:NUM_WARNING' use='required'/>
+    <xs:attribute ref='tns:NUM_CARICATE' use='required'/>
+   </xs:complexType>
+   <xs:complexType name='AnomScheda_AType'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='Anomalia' type='tns:AnomaliaType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='IdScheda' type='tns:RecIdSchedaInsType'/>
+     <xs:element minOccurs='0' name='CUPLOTTO' type='tns:CUPLOTTOType'/>
+    </xs:sequence>
+    <xs:attribute ref='tns:CIG' use='required'/>
+    <xs:attribute ref='tns:PROGRESSIVO' use='required'/>
+    <xs:attribute ref='tns:CUI'/>
+   </xs:complexType>
+   <xs:complexType name='AnomaliaType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:CODICE'/>
+    <xs:attribute ref='tns:DESCRIZIONE' use='required'/>
+    <xs:attribute ref='tns:LIVELLO' use='required'/>
+    <xs:attribute ref='tns:ELEMENTO' use='required'/>
+    <xs:attribute ref='tns:SCHEDA'/>
+    <xs:attribute ref='tns:PROGRESSIVO'/>
+    <xs:attribute ref='tns:CAMPO_XML'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+   </xs:complexType>
+   <xs:simpleType name='NomeCampoType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='RecIdSchedaInsType'>
+    <xs:sequence/>
+    <xs:attribute ref='tns:SCHEDA' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_SIMOG' use='required'/>
+    <xs:attribute ref='tns:ID_SCHEDA_LOCALE'/>
+    <xs:attribute ref='tns:OPERAZIONE' use='required'/>
+   </xs:complexType>
+   <xs:simpleType name='FlagSOType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='S'/>
+     <xs:enumeration value='O'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='TipoSchedaType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='F'/>
+     <xs:enumeration value='S'/>
+     <xs:enumeration value='L'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='FlagSNType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='S'/>
+     <xs:enumeration value='N'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='SezioneType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='PA'/>
+     <xs:enumeration value='RA'/>
+     <xs:enumeration value='IN'/>
+     <xs:enumeration value='CO'/>
+     <xs:enumeration value='RE'/>
+     <xs:enumeration value='RS'/>
+     <xs:enumeration value='RQ'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='FlagRitardoType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='P'/>
+     <xs:enumeration value='A'/>
+     <xs:enumeration value='R'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='FlagEsitoCollaudoType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='P'/>
+     <xs:enumeration value='N'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='FlagTCType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='R'/>
+     <xs:enumeration value='S'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='TipiSchedeType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='DATI_COMUNI'/>
+     <xs:enumeration value='AGGIUDICAZIONE'/>
+     <xs:enumeration value='ESCLUSO'/>
+     <xs:enumeration value='SOTTOSOGLIA'/>
+     <xs:enumeration value='ADESIONE'/>
+     <xs:enumeration value='FASE_INIZIALE'/>
+     <xs:enumeration value='STIPULA'/>
+     <xs:enumeration value='STATO_AVANZAMENTO'/>
+     <xs:enumeration value='FINE_LAVORI'/>
+     <xs:enumeration value='COLLAUDO'/>
+     <xs:enumeration value='IPOTESI_RECESSO'/>
+     <xs:enumeration value='ACCORDO_BONARIO'/>
+     <xs:enumeration value='SOSPENSIONE'/>
+     <xs:enumeration value='VARIANTE'/>
+     <xs:enumeration value='SUBAPPALTO'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='LivelloType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='ERRORE'/>
+     <xs:enumeration value='ATTENZIONE'/>
+     <xs:enumeration value='AVVISO'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='TipiOperazioneType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='INSERIMENTO'/>
+     <xs:enumeration value='MODIFICA'/>
+     <xs:enumeration value='ELIMINAZIONE'/>
+     <xs:enumeration value='VARIAZIONE_ANAG'/>
+     <xs:enumeration value='VARIAZIONE_SA'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:attribute name='ALTRE_MOTIVAZIONI' type='xs:string'/>
+   <xs:attribute name='AMM_IMPORTO_DEF' type='tns:ImportoType'/>
+   <xs:attribute name='AMM_IMPORTO_RICH' type='tns:ImportoType'/>
+   <xs:attribute name='AMM_NUM_DADEF' type='tns:InteroType'/>
+   <xs:attribute name='AMM_NUM_DEFINITE' type='tns:InteroType'/>
+   <xs:attribute name='ARB_IMPORTO_DEF' type='tns:ImportoType'/>
+   <xs:attribute name='ARB_IMPORTO_RICH' type='tns:ImportoType'/>
+   <xs:attribute name='ARB_NUM_DADEF' type='tns:InteroType'/>
+   <xs:attribute name='ARB_NUM_DEFINITE' type='tns:InteroType'/>
+   <xs:attribute name='ASTA_ELETTRONICA' type='xs:string'/>
+   <xs:attribute name='CAMERA_COMMERCIO' type='xs:string'/>
+   <xs:attribute name='CAMPO_XML' type='tns:NomeCampoType'/>
+   <xs:attribute name='CAP' type='xs:string'/>
+   <xs:attribute name='CF_AMM' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_AMMINISTRAZIONE' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_AMM_AGENTE' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_AUSILIARIA' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_DITTA' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_RAPPRESENTANTE' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_RUP' type='tns:CodFiscType'/>
+   <xs:attribute name='CF_SA' type='tns:CodFiscType'/>
+   <xs:attribute name='CIG' type='xs:string'/>
+   <xs:attribute name='CIG_PROCEDURA' type='tns:CigType'/>
+   <xs:attribute name='CIG_PROG_ESTERNA' type='tns:CigType'/>
+   <xs:attribute name='CITTA' type='xs:string'/>
+   <xs:attribute name='CIVICO' type='xs:string'/>
+   <xs:attribute name='CLASSE_IMPORTO' type='tns:ClasseImportoType'/>
+   <xs:attribute name='CODICE' type='xs:string'/>
+   <xs:attribute name='CODICE_CASSA' type='xs:string'/>
+   <xs:attribute name='CODICE_CC' type='xs:string'/>
+   <xs:attribute name='CODICE_CONTRATTO' type='tns:IdSchedaType'/>
+   <xs:attribute name='CODICE_FISCALE_AGGIUDICATARIO' type='tns:CodFiscType'/>
+   <xs:attribute name='CODICE_FISCALE_AUSILIARIA' type='tns:CodFiscType'/>
+   <xs:attribute name='CODICE_FISCALE_RESPONSABILE' type='xs:string'/>
+   <xs:attribute name='CODICE_FISCALE_SUBAPPALTATORE' type='tns:CodFiscType'/>
+   <xs:attribute name='CODICE_INAIL' type='xs:string'/>
+   <xs:attribute name='CODICE_INPS' type='xs:string'/>
+   <xs:attribute name='CODICE_ISTAT_COMUNE' type='tns:LuogoIstatType'/>
+   <xs:attribute name='CODICE_STATO' type='tns:StatoEsteroType'/>
+   <xs:attribute name='CODICE_STATO_AGGIUDICATARIO' type='tns:StatoEsteroType'/>
+   <xs:attribute name='CODICE_STATO_AUSILIARIA' type='tns:StatoEsteroType'/>
+   <xs:attribute name='COD_STRUMENTO' type='xs:string'/>
+   <xs:attribute name='COGNOME' type='xs:string'/>
+   <xs:attribute name='CRITERI_SELEZIONE_STABILITI_SA' type='tns:FlagSNType'/>
+   <xs:attribute name='CUI' type='xs:string'/>
+   <xs:attribute name='CUP' type='tns:CupType'/>
+   <xs:attribute name='DATA_ACCORDO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_AFF_PROG_ESTERNA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_AGGIUDICAZIONE' type='xs:string'/>
+   <xs:attribute name='DATA_ALBO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_ANTICIPAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_APP_PROG_ESEC' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_ATTO_AGGIUNTIVO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_AUTORIZZAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_BORE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_CERTIFICATO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_CERT_COLLAUDO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_COLLAUDO_STAT' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_CONSEGNA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_CONS_PROG_ESTERNA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_CREAZIONE_FLUSSO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_DECORRRENZA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_DELIBERA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_ELABORAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_ESECUTIVITA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_GUCE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_GURI' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_INIZIO_OPER' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_INI_PROG_ESEC' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_INVITO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_IST_RECESSO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_MANIF_INTERESSE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_NOMINA_COLL' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_RAGGIUNGIMENTO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_REGOLARE_ESEC' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_RISOLUZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_SCADENZA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_SCADENZA_PRES_OFFERTA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_SCADENZA_RICHIESTA_INVITO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_STIPULA' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_TERMINE' type='xs:string'/>
+   <xs:attribute name='DATA_ULTIMAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERBALE_CONS' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERBALE_DEF' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_AGGIUDICAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_APPR' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_CONSEGNA_AVVIO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_INIZIO' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_RIPR' type='tns:DbDateType'/>
+   <xs:attribute name='DATA_VERB_SOSP' type='tns:DbDateType'/>
+   <xs:attribute name='DATI_DIPE' type='xs:string'/>
+   <xs:attribute name='DENOMINAZIONE' type='xs:string'/>
+   <xs:attribute name='DENOM_AVANZAMENTO' type='xs:string'/>
+   <xs:attribute name='DENOM_CC' type='xs:string'/>
+   <xs:attribute name='DEN_AMM' type='xs:string'/>
+   <xs:attribute name='DEN_AMM_AGENTE' type='xs:string'/>
+   <xs:attribute name='DEN_SA' type='xs:string'/>
+   <xs:attribute name='DESCRIZIONE' type='xs:string'/>
+   <xs:attribute name='DURATA_ACCQUADRO_CONVENZIONE' type='tns:InteroType'/>
+   <xs:attribute name='DURATA_CONTRATTUALE' type='tns:InteroType'/>
+   <xs:attribute name='DURATA_SOSP' type='tns:InteroType'/>
+   <xs:attribute name='ELEMENTO' type='tns:InteroType'/>
+   <xs:attribute name='EMAIL' type='xs:string'/>
+   <xs:attribute name='ESITO_COLLAUDO' type='tns:FlagEsitoCollaudoType'/>
+   <xs:attribute name='ESITO_PROCEDURA' type='tns:EsitoProceduraType'/>
+   <xs:attribute name='FAX' type='xs:string'/>
+   <xs:attribute name='FLAG_ACCOLTA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_ACCORDO_QUADRO' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_ACC_QUADRO' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_AGGIUD_PRINCIPALE' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_AVVALIMENTO' type='xs:string'/>
+   <xs:attribute name='FLAG_BENICULT' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_CENTRALE_STIPULA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_CUP' type='xs:string'/>
+   <xs:attribute name='FLAG_ENTE_SPECIALE' type='tns:FlagSOType'/>
+   <xs:attribute name='FLAG_ESCLUSO' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_FRAZIONATA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_ONERI' type='tns:FlagOneriType'/>
+   <xs:attribute name='FLAG_PAGAMENTO' type='tns:FlagPagamentoType'/>
+   <xs:attribute name='FLAG_POLIZZA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_RICH_SUBAPPALTO' type='xs:string'/>
+   <xs:attribute name='FLAG_RIPRESA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_RISERVA' type='xs:string'/>
+   <xs:attribute name='FLAG_RISERVE' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_RITARDO' type='tns:FlagRitardoType'/>
+   <xs:attribute name='FLAG_SA_AGENTE' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_SOSPESO' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_SUPERO_TEMPO' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_TARDIVA' type='tns:FlagSNType'/>
+   <xs:attribute name='FLAG_VERBALE' type='tns:FlagSNType'/>
+   <xs:attribute name='GIU_IMPORTO_DEF' type='tns:ImportoType'/>
+   <xs:attribute name='GIU_IMPORTO_RICH' type='tns:ImportoType'/>
+   <xs:attribute name='GIU_NUM_DADEF' type='tns:InteroType'/>
+   <xs:attribute name='GIU_NUM_DEFINITE' type='tns:InteroType'/>
+   <xs:attribute name='ID_APPALTO' type='tns:TipoAppaltoType'/>
+   <xs:attribute name='ID_CATEGORIA' type='xs:string'/>
+   <xs:attribute name='ID_CATEG_SA' type='tns:CategSAType'/>
+   <xs:attribute name='ID_CENTRO_COSTO' type='xs:string'/>
+   <xs:attribute name='ID_CONDIZIONE' type='tns:CondizioneAggType'/>
+   <xs:attribute name='ID_CPV' type='xs:string'/>
+   <xs:attribute name='ID_ESCLUSIONE' type='tns:ArtEsclusioneType'/>
+   <xs:attribute name='ID_FINANZIAMENTO' type='tns:TipoFinanziamentoType'/>
+   <xs:attribute name='ID_GARA' type='tns:LongType'/>
+   <xs:attribute name='ID_GRUPPO' type='tns:InteroType99'/>
+   <xs:attribute name='ID_GRUPPO_INCARICATO' type='tns:InteroType99'/>
+   <xs:attribute name='ID_MODO_GARA' type='tns:ModoGaraType'/>
+   <xs:attribute name='ID_MODO_INDIZIONE' type='tns:ModoIndizioneType'/>
+   <xs:attribute name='ID_MOTIVO_INTERR' type='tns:MotivoInterruzioneType'/>
+   <xs:attribute name='ID_MOTIVO_REV_PREZZI' type='tns:MotivoRevPrezziType'/>
+   <xs:attribute name='ID_MOTIVO_RISOL' type='tns:MotivoRisoluzioneType'/>
+   <xs:attribute name='ID_MOTIVO_SOSP' type='tns:MotivoSospensioneType'/>
+   <xs:attribute name='ID_MOTIVO_VAR' type='tns:MotivoVarianteType'/>
+   <xs:attribute name='ID_RICHIESTA' type='tns:LongType'/>
+   <xs:attribute name='ID_RUOLO' type='tns:RuoloResponsabileType'/>
+   <xs:attribute name='ID_SCELTA_CONTRAENTE' type='xs:string'/>
+   <xs:attribute name='ID_SCHEDA_LOCALE' type='xs:string'/>
+   <xs:attribute name='ID_SCHEDA_SIMOG' type='xs:string'/>
+   <xs:attribute name='ID_STATO_SCHEDA' type='xs:string'/>
+   <xs:attribute name='ID_TIPOAGG' type='tns:TipoAggiudicatarioType'/>
+   <xs:attribute name='ID_TIPOLOGIA_SA' type='tns:TipologiaSAType'/>
+   <xs:attribute name='ID_TIPO_PRESTAZIONE' type='tns:TipoPrestazioneType'/>
+   <xs:attribute name='IMPORTO_AGGIUDICAZIONE' type='xs:string'/>
+   <xs:attribute name='IMPORTO_ANTICIPAZIONE' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_ATTUAZIONE_SICUREZZA' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_CAUZIONE' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_CERTIFICATO' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_COMPLESSIVO' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_DISPOSIZIONE' type='xs:string'/>
+   <xs:attribute name='IMPORTO_EFFETTIVO' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_FINANZIAMENTO' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_FORNITURE' type='xs:string'/>
+   <xs:attribute name='IMPORTO_LAVORI' type='xs:string'/>
+   <xs:attribute name='IMPORTO_ONERI' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_PRESUNTO' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_PROGETTAZIONE' type='xs:string'/>
+   <xs:attribute name='IMPORTO_SAL' type='tns:ImportoType'/>
+   <xs:attribute name='IMPORTO_SERVIZI' type='xs:string'/>
+   <xs:attribute name='IMPORTO_SPESE' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_DISPOSIZIONE' type='xs:string'/>
+   <xs:attribute name='IMP_FINALE_FORNIT' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_FINALE_LAVORI' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_FINALE_SECUR' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_FINALE_SERVIZI' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_NON_ASSOG' type='xs:string'/>
+   <xs:attribute name='IMP_PROGETTAZIONE' type='xs:string'/>
+   <xs:attribute name='IMP_RIDET_FORNIT' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_RIDET_LAVORI' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_RIDET_SERVIZI' type='tns:ImportoType'/>
+   <xs:attribute name='IMP_SICUREZZA' type='tns:ImportoType'/>
+   <xs:attribute name='INDIRIZZO' type='xs:string'/>
+   <xs:attribute name='LAVORI_ESTESI' type='tns:FlagSNType'/>
+   <xs:attribute name='LINK_AFFIDAMENTO_DIRETTO' type='xs:string'/>
+   <xs:attribute name='LINK_SITO' type='xs:string'/>
+   <xs:attribute name='LINK_VARIANTI' type='xs:string'/>
+   <xs:attribute name='LIVELLO' type='tns:LivelloType'/>
+   <xs:attribute name='LUOGO_ISTAT' type='tns:LuogoIstatType'/>
+   <xs:attribute name='LUOGO_NUTS' type='tns:LuogoNutsType'/>
+   <xs:attribute name='MANDANTE' type='tns:FlagSNType'/>
+   <xs:attribute name='MODALITA_RIAGGIUDICAZIONE' type='tns:ModoRiaggiudType'/>
+   <xs:attribute name='MODO_COLLAUDO' type='tns:FlagModoCollaudoType'/>
+   <xs:attribute name='MODO_REALIZZAZIONE' type='tns:ModoRealizzazioneType'/>
+   <xs:attribute name='MOTIVO' type='tns:MotiviVariazioneSAType'/>
+   <xs:attribute name='MOTIVO_SOSP' type='xs:string'/>
+   <xs:attribute name='NOME' type='xs:string'/>
+   <xs:attribute name='NUMERO_BORE' type='tns:CuiType'/>
+   <xs:attribute name='NUMERO_GUCE' type='tns:CuiType'/>
+   <xs:attribute name='NUMERO_GURI' type='tns:CuiType'/>
+   <xs:attribute name='NUM_CARICATE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_ELABORATE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_ERRORE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_GIORNI_PROROGA' type='tns:InteroType'/>
+   <xs:attribute name='NUM_GIORNI_SCOST' type='tns:InteroType'/>
+   <xs:attribute name='NUM_IMPRESE_INVITATE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_IMPRESE_OFFERENTI' type='tns:InteroType'/>
+   <xs:attribute name='NUM_IMPRESE_RICHIEDENTI' type='tns:InteroType'/>
+   <xs:attribute name='NUM_IMP_ESCL_INSUF_GIUST' type='tns:InteroType'/>
+   <xs:attribute name='NUM_INFORTUNI' type='tns:InteroType'/>
+   <xs:attribute name='NUM_INF_MORT' type='tns:InteroType'/>
+   <xs:attribute name='NUM_INF_PERM' type='tns:InteroType'/>
+   <xs:attribute name='NUM_MANIF_INTERESSE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_OFFERTE_AMMESSE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_OFFERTE_ESCLUSE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_OFFERTE_FUORI_SOGLIA' type='tns:InteroType'/>
+   <xs:attribute name='NUM_RISERVE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_SCHEDE' type='tns:InteroType'/>
+   <xs:attribute name='NUM_WARNING' type='tns:InteroType'/>
+   <xs:attribute name='OFFERTA_MASSIMO' type='tns:PercentualeType'/>
+   <xs:attribute name='OFFERTA_MINIMA' type='tns:PercentualeType'/>
+   <xs:attribute name='OGGETTO_SUBAPPALTO' type='xs:string'/>
+   <xs:attribute name='OK_UTENTE' type='tns:FlagSNType'/>
+   <xs:attribute name='ONERI_DERIVANTI' type='tns:ImportoType'/>
+   <xs:attribute name='ONERI_RISOLUZIONE' type='tns:ImportoType'/>
+   <xs:attribute name='OPERAZIONE' type='tns:TipiOperazioneType'/>
+   <xs:attribute name='OPERE_URBANIZ_SCOMPUTO' type='tns:FlagSNType'/>
+   <xs:attribute name='ORIGINE_SCHEDA' type='xs:string'/>
+   <xs:attribute name='PARTITA_IVA' type='tns:CodFiscType'/>
+   <xs:attribute name='PERC_OFF_AUMENTO' type='xs:string'/>
+   <xs:attribute name='PERC_RIBASSO_AGG' type='xs:string'/>
+   <xs:attribute name='PERIODICI' type='tns:InteroType'/>
+   <xs:attribute name='PERSONA_GIURIDICA' type='tns:FlagSNType'/>
+   <xs:attribute name='PREINFORMAZIONE' type='tns:FlagSNType'/>
+   <xs:attribute name='PREVALENTE' type='tns:FlagSNType'/>
+   <xs:attribute name='PROCEDURA_ACC' type='tns:FlagSNType'/>
+   <xs:attribute name='PROFILO_COMMITTENTE' type='tns:FlagSNType'/>
+   <xs:attribute name='PROGRESSIVO' type='xs:string'/>
+   <xs:attribute name='PROG_CUI_RIAGGIUDICATO' type='tns:InteroType'/>
+   <xs:attribute name='PROVINCIA' type='xs:string'/>
+   <xs:attribute name='PROVV_PRESA_CARICO' type='xs:string'/>
+   <xs:attribute name='QUOTIDIANI_NAZ' type='tns:InteroType'/>
+   <xs:attribute name='QUOTIDIANI_REG' type='tns:InteroType'/>
+   <xs:attribute name='RELAZIONE_UNICA' type='tns:FlagSNType'/>
+   <xs:attribute name='RUOLO' type='tns:RuoloAggiudicatarioType'/>
+   <xs:attribute name='SCHEDA' type='tns:TipiSchedeType'/>
+   <xs:attribute name='SCORPORABILE' type='tns:FlagSNType'/>
+   <xs:attribute name='SEZIONE' type='tns:SezioneType'/>
+   <xs:attribute name='SISTEMA_QUALIFICAZIONE' type='tns:FlagSNType'/>
+   <xs:attribute name='SITO_MINISTERO_INF_TRASP' type='tns:FlagSNType'/>
+   <xs:attribute name='SITO_OSSERVATORIO_CP' type='tns:FlagSNType'/>
+   <xs:attribute name='SOGGETTO_ESTERO' type='tns:FlagSNType'/>
+   <xs:attribute name='SUBAPPALTABILE' type='tns:FlagSNType'/>
+   <xs:attribute name='TELEFONO' type='xs:string'/>
+   <xs:attribute name='TEMATICA_PNRR' type='xs:string'/>
+   <xs:attribute name='TERMINE_CONTRATTUALE' type='tns:DbDateType'/>
+   <xs:attribute name='TERMINE_CONTRATT_ULTIMAZIONE' type='tns:DbDateType'/>
+   <xs:attribute name='TERMINE_RIDOTTO' type='tns:FlagSNType'/>
+   <xs:attribute name='TIPOLOGIA_PROCEDURA' type='tns:TipologiaProceduraType'/>
+   <xs:attribute name='TIPO_COMUN' type='tns:FlagTCType'/>
+   <xs:attribute name='TIPO_CONTRATTO' type='tns:TipoSchedaType'/>
+   <xs:attribute name='TRA_IMPORTO_DEF' type='tns:ImportoType'/>
+   <xs:attribute name='TRA_IMPORTO_RICH' type='tns:ImportoType'/>
+   <xs:attribute name='TRA_NUM_DADEF' type='tns:InteroType'/>
+   <xs:attribute name='TRA_NUM_DEFINITE' type='tns:InteroType'/>
+   <xs:attribute name='ULTERIORI_SOMME' type='tns:ImportoType'/>
+   <xs:attribute name='VALIDO' type='tns:FlagSNType'/>
+   <xs:attribute name='VAL_SOGLIA_ANOMALIA' type='tns:PercentualeType'/>
+  </xs:schema>
+ </types>
+ <message name='LoaderAppaltoWSAVCPASS_loaderAppaltoAVCPASSResponse'>
+  <part element='tns:loaderAppaltoAVCPASSResponse' name='loaderAppaltoAVCPASSResponse'></part>
+ </message>
+ <message name='LoaderAppaltoWSAVCPASS_loaderAppaltoAVCPASS'>
+  <part element='tns:loaderAppaltoAVCPASS' name='loaderAppaltoAVCPASS'></part>
+ </message>
+ <portType name='LoaderAppaltoWSAVCPASS'>
+  <operation name='loaderAppaltoAVCPASS' parameterOrder='loaderAppaltoAVCPASS'>
+   <input message='tns:LoaderAppaltoWSAVCPASS_loaderAppaltoAVCPASS'></input>
+   <output message='tns:LoaderAppaltoWSAVCPASS_loaderAppaltoAVCPASSResponse'></output>
+  </operation>
+ </portType>
+ <binding name='LoaderAppaltoWSAVCPASSBinding' type='tns:LoaderAppaltoWSAVCPASS'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='loaderAppaltoAVCPASS'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='LoaderAppaltoWSAVCPASSService'>
+  <port binding='tns:LoaderAppaltoWSAVCPASSBinding' name='LoaderAppaltoWSAVCPASSPort'>
+   <soap:address location='http://localhost:8080/SimogWSPDD/services/LoaderAppaltoAVCPASS'/>
+  </port>
+ </service>
+</definitions>
