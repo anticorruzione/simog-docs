@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:simog="xmlbeans.massload.simog.avlp.it" targetNamespace="xmlbeans.massload.simog.avlp.it" elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<!-- tipi di dati comuni -->
+	<xsd:include schemaLocation="SimpleTypes.xsd"/>
+	<xsd:include schemaLocation="ListTypes.xsd"/>
+   <xsd:include schemaLocation="ComplexTypes.xsd"/>
+   <xsd:include schemaLocation="RequisitiWS.xsd"/>
+
+   <!-- is30350_RFWSGL01Active          -->
+   <xsd:complexType name="ElencoCategMercType">
+      <xsd:sequence>
+         <xsd:element name="CATEGORIA" type="simog:CategorieMerceologicheType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+
+	<xsd:complexType name="GaraType">
+      <!-- is30350_RFWSGL01Active          -->
+      <xsd:sequence>
+         <xsd:element name="CATEGORIE_MERC" type="simog:ElencoCategMercType" minOccurs="0" maxOccurs="1"></xsd:element>
+      </xsd:sequence>
+
+		<xsd:attribute name="OGGETTO" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1024"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="ID_STAZIONE_APPALTANTE" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="40"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="DENOM_STAZIONE_APPALTANTE" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="CF_AMMINISTRAZIONE" type="simog:CodFiscType"
+			use="required" />		
+		<xsd:attribute name="DENOM_AMMINISTRAZIONE" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="250"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	  <xsd:attribute name="CF_UTENTE" type="simog:CodFiscType" use="required" />		
+      <xsd:attribute name="ID_GARA" type="simog:LongType" use="optional" />
+      <xsd:attribute name="IMPORTO_GARA" type="simog:ImportoLottoType" use="required" />    
+      <xsd:attribute name="IMPORTO_SA_GARA" type="simog:ImportoType" />
+      <xsd:attribute name="DATA_CANCELLAZIONE_GARA" type="simog:DbDateType" />
+      <xsd:attribute name="DATA_TERMINE_PAGAMENTO"  type="simog:DbDateType" />
+      <xsd:attribute name="DATA_COMUN" type="simog:DbDateType" />
+      <xsd:attribute name="DATA_INIB_PAGAM" type="simog:DbDateType" />
+      <xsd:attribute name="DATA_CONFERMA_GARA" type="simog:DbDateType" />          
+      <xsd:attribute name="TIPO_SCHEDA" type="simog:FlagSOType" />          
+      <xsd:attribute name="MODO_INDIZIONE" type="simog:ModoIndizioneType" />          
+      <xsd:attribute name="MODO_REALIZZAZIONE" type="simog:ModoRealizzazioneType" />        
+      <xsd:attribute name="ID_MOTIVAZIONE" type="simog:MotiviCancellazioneType" />
+      <xsd:attribute name="NOTE_CANC">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="1000"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <xsd:attribute name="CIG_ACC_QUADRO" type="simog:CigType" />                
+      <xsd:attribute name="NUMERO_LOTTI" type="simog:InteroType" use="optional" />
+      <!-- 3.02.1.4 -->
+      <xsd:attribute name="DATA_CREAZIONE" type="simog:DbDateType" use="optional" />          
+      <xsd:attribute name="ID_OSSERVATORIO" type="xsd:string" use="optional" />          
+      <xsd:attribute name="ID_STATO_GARA" type="simog:StatoCigType" use="optional" />          
+      <xsd:attribute name="DATA_PERFEZIONAMENTO_BANDO" type="simog:DbDateType" use="optional" />          
+      <!-- 3.02.1.4 -->
+      
+      <!-- is3028_RFWSSC00Active -->
+      <xsd:attribute name="PROVV_PRESA_CARICO" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="250"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <!-- is3031_ESCL_AVCPASS -->
+      <xsd:attribute name="ESCLUSO_AVCPASS" type="simog:FlagSNType" use="optional" />
+
+      <!--   isINT87_RFSIMOGWEB01Active -->
+      <xsd:attribute name="URGENZA_DL133" type="simog:FlagSNType" use="optional" />    
+      
+      <!-- is30350_RFWSGL01Active       -->
+      <xsd:attribute name="MOTIVO_RICH_CIG" type="simog:MotiviRichiestaCigType" use="optional" /> 
+
+      <!-- isINT85_RFWEBGL01Active -->
+      <xsd:attribute name="MOTIVO_RICH_CIG_COMUNI" type="simog:MotiviRichiestaCigComuniType" use="optional" /> 
+
+	  <!-- Inizio 3.04.2 -->
+	  <xsd:attribute name="STRUMENTO_SVOLGIMENTO" type="simog:StrumentoSvolgimentoType" />  
+	  <xsd:attribute name="ESTREMA_URGENZA" type="simog:EstremaUrgenzaType" />  
+	  <xsd:attribute name="ALLEGATO_IX" type="simog:AllegatoIXType" />  
+	  <!-- Fine 3.04.2 -->
+	  
+	  <!-- Inizio 3.04.3 -->
+	  <xsd:attribute name="DURATA_ACCQUADRO_CONVENZIONE_GARA" type="simog:InteroType" use="optional" />
+	  <!-- Fine 3.04.3 -->
+	  
+	  <!-- Inizio 3.04.4 -->
+	  <xsd:attribute name="FLAG_SA_AGENTE_GARA" type="simog:FlagSNType" use="optional" />
+	  <xsd:attribute name="CF_AMM_AGENTE_GARA" type="simog:CodFiscType" use="optional" />
+	  <xsd:attribute name="DEN_AMM_AGENTE_GARA" use="optional">
+	        <xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+							<xsd:maxLength value="250"></xsd:maxLength>
+					</xsd:restriction>
+			</xsd:simpleType>
+	  </xsd:attribute>
+	  <xsd:attribute name="ID_F_DELEGATE" type="simog:FunzioniDelegateType" />   
+	  <!-- Fine 3.04.4 -->
+	  
+	  <!-- Inizio 3.04.5 -->
+	  <xsd:attribute name="CODICE_AUSA" use="optional" type="xsd:string" />
+	  <!-- Fine 3.04.5 -->
+	  
+	</xsd:complexType>
+
+	<xsd:complexType name="CategLottoType">
+		<xsd:sequence>
+			<xsd:element name="CATEGORIA" type="simog:CategoriaType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="LottoType">
+		<xsd:sequence>
+			<xsd:element name="CATEGORIE" type="simog:CategLottoType" minOccurs="0" maxOccurs="1"></xsd:element>
+
+<!-- inizio     is3031_RNFDBGL01Active          -->
+         <xsd:element name="TipiAppaltoLav" type="simog:TipiAppaltoType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="TipiAppaltoForn" type="simog:TipiAppaltoType" minOccurs="0" maxOccurs="unbounded"/>         
+         <xsd:element name="CUPLOTTO" type="simog:CUPLOTTOType" minOccurs="0" maxOccurs="1"></xsd:element>
+		 <xsd:element name="Condizioni" type="simog:CondizioneLtType" minOccurs="0" maxOccurs="unbounded"/>	  <!--3.04.2 -->
+		 <xsd:element name="CPVSecondaria" type="simog:CPVSecondariaType" minOccurs="0" maxOccurs="unbounded"/>	  <!--3.04.4 -->
+		 <xsd:element name="MisuraPremiale" type="simog:MisuraPremialeType" minOccurs="0" maxOccurs="unbounded"/>	  <!--3.04.7 -->
+		 <xsd:element name="MotivoDeroga" type="simog:MotivoDerogaType" minOccurs="0" maxOccurs="unbounded"/>	  <!--3.04.7 -->
+<!-- fine    is3031_RNFDBGL01Active          -->
+
+		</xsd:sequence>
+      <xsd:attribute name="CIG" type="simog:CigType" use="optional" />
+		<xsd:attribute name="OGGETTO" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="1024"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="SOMMA_URGENZA" type="simog:FlagSNType" />
+		<xsd:attribute name="IMPORTO_LOTTO" type="simog:ImportoLottoType"
+			use="required" />
+		<xsd:attribute name="IMPORTO_SA" type="simog:ImportoType"
+			use="required" />
+		<xsd:attribute name="IMPORTO_IMPRESA" type="simog:ImportoType"
+			use="required" />
+		<xsd:attribute name="CPV" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="12"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="ID_SCELTA_CONTRAENTE"
+			type="simog:SceltaContraenteType" use="required" />
+		<xsd:attribute name="ID_CATEGORIA_PREVALENTE"
+			type="simog:CategoriaType" use="required" />
+		<xsd:attribute name="DATA_PUBBLICAZIONE"
+			type="simog:DbDateType" />
+		<xsd:attribute name="DATA_SCADENZA_PAGAMENTI"
+			type="simog:DbDateType" />
+		<xsd:attribute name="DATA_COMUNICAZIONE"
+			type="simog:DbDateType" />
+		<xsd:attribute name="DATA_INIB_PAGAMENTO"
+			type="simog:DbDateType" />
+ 
+      <xsd:attribute name="ID_MOTIVAZIONE" type="simog:MotiviCancellazioneType" use="optional"/>
+      <xsd:attribute name="NOTE_CANC" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="1000"></xsd:maxLength>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <xsd:attribute name="TIPO_CONTRATTO" type="simog:TipoSchedaType" />  
+      <xsd:attribute name="FLAG_DEROGA_ADESIONE" type="simog:FlagSNType" /> <!-- 3.04.8.1 -->
+      <xsd:attribute name="FLAG_USO_METODI_EDILIZIA" type="simog:FlagSNType" />  <!-- 3.04.8.1 -->
+      <xsd:attribute name="FLAG_ESCLUSO" type="simog:FlagSNType" />          
+      <xsd:attribute name="ID_ESCLUSIONE" type="simog:ArtEsclusioneType" />    
+      <xsd:attribute name="LUOGO_ISTAT" type="simog:LuogoIstatType" use="optional" />
+      <xsd:attribute name="LUOGO_NUTS" use="optional" type="simog:LuogoNutsType" />
+      <xsd:attribute name="IMPORTO_ATTUAZIONE_SICUREZZA" type="simog:ImportoType" />
+      <xsd:attribute name="TRIENNIO_ANNO_INIZIO" type="simog:InteroType" />                
+      <xsd:attribute name="TRIENNIO_ANNO_FINE" type="simog:InteroType" />                
+      <xsd:attribute name="TRIENNIO_PROGRESSIVO" type="simog:InteroType" />                
+      <xsd:attribute name="ANNUALE_CUI_MININF" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:minLength value="20"/>
+               <xsd:maxLength value="22"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+      <!-- 3.02.1.4 -->
+      <xsd:attribute name="DATA_CREAZIONE_LOTTO" type="simog:DbDateType" use="optional" />          
+      <xsd:attribute name="DATA_CANCELLAZIONE_LOTTO" type="simog:DbDateType" use="optional" />          
+      <!-- 3.02.1.4 -->      
+      <!-- 3.02.3.3 -->    
+      <xsd:attribute name="FLAG_PREVEDE_RIP" type="simog:FlagSNType" use="optional" />          
+      <xsd:attribute name="FLAG_RIPETIZIONE" type="simog:FlagSNType" use="optional" />          
+      <xsd:attribute name="CIG_ORIGINE_RIP" type="simog:CigType" use="optional" />
+       
+      <!--   is3025_RFWEBGL02Active -->
+      <xsd:attribute name="ORA_SCADENZA" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:length value="5"></xsd:length>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+       
+      <!--   is3028_RFWEBSC00Active -->
+      <xsd:attribute name="STATO_AVCPASS" type="simog:StatoAVCPASSType" use="optional" />
+      
+      <!--   is3030_RFWEBGL00Active -->
+      <xsd:attribute name="DATA_SCADENZA_RICHIESTA_INVITO" type="simog:DbDateType" use="optional" />       
+      <xsd:attribute name="DATA_LETTERA_INVITO" type="simog:DbDateType" use="optional" />
+      
+      <!--   is3031_RNFDBGL01Active -->
+      <xsd:attribute name="FLAG_CUP" type="simog:FlagSNType" use="optional" />    
+
+      <!-- Inizio 3.04.7 -->
+      <xsd:attribute name="FLAG_PNRR_PNC" type="simog:FlagSNType" use="required" />     
+      <xsd:attribute name="FLAG_PREVISIONE_QUOTA" type="simog:FlagSNQType" use="optional" />   
+	  <xsd:attribute name="QUOTA_FEMMINILE" type="simog:PercentualeType" use="optional" />     
+      <xsd:attribute name="QUOTA_GIOVANILE" type="simog:PercentualeType" use="optional" />    
+      <xsd:attribute name="FLAG_MISURE_PREMIALI" type="simog:FlagSNType" use="optional" />   	  
+      <!-- Fine 3.04.7 -->
+
+      <!-- Inizio 3.04.2 -->
+	  <xsd:attribute name="FLAG_DL50" type="simog:FlagSNType" use="optional" />    
+	   <xsd:attribute name="PRIMA_ANNUALITA" use="optional">
+         <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+               <xsd:length value="4"></xsd:length>
+            </xsd:restriction>
+         </xsd:simpleType>
+      </xsd:attribute>
+	  <xsd:attribute name="ID_AFF_RISERVATI" type="simog:AffidamentiRiservatiType" use="optional" /> 
+	  <xsd:attribute name="FLAG_REGIME" type="simog:FlagSNType" use="optional" />    
+	  <xsd:attribute name="ART_REGIME" type="simog:ArtRegimeType" use="optional" />
+	  <!-- Fine 3.04.2 -->
+	  
+	  <!-- Inizio 3.04.3 -->
+      <xsd:attribute name="ID_MOTIVO_COLL_CIG" type="simog:MotivoCollegamentoType" />
+	   <!-- Fine 3.04.3 -->
+	   <!-- Inizio 3.04.4 -->
+	  <xsd:attribute name="CATEGORIA_MERC" type="simog:CategorieMerceologicheType" />
+	  <xsd:attribute name="FLAG_NO_ADESIONE_INIZIATIVA" type="simog:FlagSNType" use="optional" />   
+	  <xsd:attribute name="FLAG_SA_NON_CLASSIFICATA" type="simog:FlagSNType" use="optional" />  
+       <!-- Fine 3.04.4 -->
+	   <!-- Inizio 3.04.5 -->
+	   <xsd:attribute name="IMPORTO_OPZIONI" type="simog:ImportoLottoType" />
+	   <!-- Fine 3.04.5 -->
+	   
+	   <!-- Inizio 3.04.6 -->
+	    <xsd:attribute name="DURATA_RINNOVI" type="simog:InteroType" />   
+		<xsd:attribute name="DURATA_AFFIDAMENTO" type="simog:InteroType" />  
+	   <!-- Fine 3.04.6 -->
+	   
+	</xsd:complexType>
+	<!-- Inizio 3.04.3 -->
+	<xsd:complexType name="CondizioneLtType">
+		<xsd:attribute name="ID_CONDIZIONE" type="simog:CondizioneLottoType" use="required"/>
+	</xsd:complexType>
+	<!-- Fine 3.04.3 -->
+	
+	<!-- Inizio 3.04.4 -->
+    <xsd:complexType name="CPVSecondariaType">
+	    <xsd:attribute name="COD_CPV_SECONDARIA" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="12"></xsd:maxLength>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+    <!-- Fine 3.04.4 -->
+	
+	<xsd:complexType name="DatiGaraType">
+		<xsd:annotation>
+		<xsd:documentation>Struttura dati GARA</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Gara" type="simog:GaraType">
+			</xsd:element>
+			<xsd:element name="Lotto" type="simog:LottoType" minOccurs="0">
+			</xsd:element>
+         <xsd:element name="Requisito" type="simog:ReqGaraType" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
