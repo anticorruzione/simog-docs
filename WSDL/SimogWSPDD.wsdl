@@ -58,6 +58,8 @@
    <xs:element name='integraCUPResponse' type='tns:integraCUPResponse'/>
    <xs:element name='integraDL133' type='tns:integraDL133'/>
    <xs:element name='integraDL133Response' type='tns:integraDL133Response'/>
+   <xs:element name='integraPariOpportunita' type='tns:integraPariOpportunita'/>
+   <xs:element name='integraPariOpportunitaResponse' type='tns:integraPariOpportunitaResponse'/>
    <xs:element name='inviaRequisiti' type='tns:inviaRequisiti'/>
    <xs:element name='inviaRequisitiResponse' type='tns:inviaRequisitiResponse'/>
    <xs:element name='login' type='tns:login'/>
@@ -111,6 +113,41 @@
      <xs:element minOccurs='0' name='ufficio_denominazione' type='xs:string'/>
      <xs:element minOccurs='0' name='ufficio_id' type='xs:string'/>
      <xs:element minOccurs='0' name='ufficio_profilo' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='integraPariOpportunita'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='ticket' type='xs:string'/>
+     <xs:element minOccurs='0' name='indexCollaborazione' type='xs:string'/>
+     <xs:element minOccurs='0' name='cig' type='xs:string'/>
+     <xs:element minOccurs='0' name='FLAG_PNRR_PNC' type='tns:FlagSNType'/>
+     <xs:element minOccurs='0' name='FLAG_PREVISIONE_QUOTA' type='tns:FlagSNQType'/>
+     <xs:element minOccurs='0' name='QUOTA_FEMMINILE' type='tns:PercentualeType'/>
+     <xs:element minOccurs='0' name='QUOTA_GIOVANILE' type='tns:PercentualeType'/>
+     <xs:element minOccurs='0' name='FLAG_MISURE_PREMIALI' type='tns:FlagSNType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='MotivoDeroga' type='tns:MotivoDerogaType'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='MisuraPremiale' type='tns:MisuraPremialeType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name='PercentualeType'>
+    <xs:restriction base='xs:decimal'/>
+   </xs:simpleType>
+   <xs:simpleType name='MotivoDerogaType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name='MisuraPremialeType'>
+    <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:complexType name='integraPariOpportunitaResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:ResponseIntegraPariOpportunita'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ResponseIntegraPariOpportunita'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='messaggio' type='xs:string'/>
+     <xs:element name='success' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='error' type='xs:string'/>
     </xs:sequence>
    </xs:complexType>
    <xs:complexType name='cancellaGara'>
@@ -299,12 +336,6 @@
     <xs:sequence/>
     <xs:attribute ref='tns:COD_CPV_SECONDARIA' use='required'/>
    </xs:complexType>
-   <xs:simpleType name='MisuraPremialeType'>
-    <xs:restriction base='xs:string'/>
-   </xs:simpleType>
-   <xs:simpleType name='MotivoDerogaType'>
-    <xs:restriction base='xs:string'/>
-   </xs:simpleType>
    <xs:simpleType name='ImportoLottoType'>
     <xs:restriction base='xs:decimal'/>
    </xs:simpleType>
@@ -334,9 +365,6 @@
    </xs:simpleType>
    <xs:simpleType name='StatoAVCPASSType'>
     <xs:restriction base='xs:string'/>
-   </xs:simpleType>
-   <xs:simpleType name='PercentualeType'>
-    <xs:restriction base='xs:decimal'/>
    </xs:simpleType>
    <xs:simpleType name='AffidamentiRiservatiType'>
     <xs:restriction base='xs:string'/>
@@ -1524,18 +1552,18 @@
      <xs:enumeration value='N'/>
     </xs:restriction>
    </xs:simpleType>
-   <xs:simpleType name='TipoSchedaType'>
-    <xs:restriction base='xs:string'>
-     <xs:enumeration value='F'/>
-     <xs:enumeration value='S'/>
-     <xs:enumeration value='L'/>
-    </xs:restriction>
-   </xs:simpleType>
    <xs:simpleType name='FlagSNQType'>
     <xs:restriction base='xs:string'>
      <xs:enumeration value='S'/>
      <xs:enumeration value='N'/>
      <xs:enumeration value='Q'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='TipoSchedaType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='F'/>
+     <xs:enumeration value='S'/>
+     <xs:enumeration value='L'/>
     </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name='FlagSOType'>
@@ -1980,6 +2008,12 @@
  <message name='SimogWSPDD_integraCUPResponse'>
   <part element='tns:integraCUPResponse' name='integraCUPResponse'></part>
  </message>
+ <message name='SimogWSPDD_integraPariOpportunita'>
+  <part element='tns:integraPariOpportunita' name='integraPariOpportunita'></part>
+ </message>
+ <message name='SimogWSPDD_integraPariOpportunitaResponse'>
+  <part element='tns:integraPariOpportunitaResponse' name='integraPariOpportunitaResponse'></part>
+ </message>
  <message name='SimogWSPDD_inviaRequisiti'>
   <part element='tns:inviaRequisiti' name='inviaRequisiti'></part>
  </message>
@@ -2095,6 +2129,10 @@
   <operation name='integraDL133' parameterOrder='integraDL133'>
    <input message='tns:SimogWSPDD_integraDL133'></input>
    <output message='tns:SimogWSPDD_integraDL133Response'></output>
+  </operation>
+  <operation name='integraPariOpportunita' parameterOrder='integraPariOpportunita'>
+   <input message='tns:SimogWSPDD_integraPariOpportunita'></input>
+   <output message='tns:SimogWSPDD_integraPariOpportunitaResponse'></output>
   </operation>
   <operation name='inviaRequisiti' parameterOrder='inviaRequisiti'>
    <input message='tns:SimogWSPDD_inviaRequisiti'></input>
@@ -2221,6 +2259,15 @@
    </output>
   </operation>
   <operation name='integraDL133'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='integraPariOpportunita'>
    <soap:operation soapAction=''/>
    <input>
     <soap:body use='literal'/>
