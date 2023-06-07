@@ -194,6 +194,7 @@
       <xsd:attribute name="TIPO_CONTRATTO" type="simog:TipoSchedaType" />  
       <xsd:attribute name="FLAG_DEROGA_ADESIONE" type="simog:FlagSNType" /> <!-- 3.04.8.1 -->
       <xsd:attribute name="FLAG_USO_METODI_EDILIZIA" type="simog:FlagSNType" />  <!-- 3.04.8.1 -->
+	  <xsd:attribute name="DEROGA_QUALIFICAZIONE_SA" type="simog:DerogaQualificazioneSA" />  <!-- 3.04.9 -->
       <xsd:attribute name="FLAG_ESCLUSO" type="simog:FlagSNType" />          
       <xsd:attribute name="ID_ESCLUSIONE" type="simog:ArtEsclusioneType" />    
       <xsd:attribute name="LUOGO_ISTAT" type="simog:LuogoIstatType" use="optional" />
