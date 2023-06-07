@@ -247,6 +247,7 @@
     <xs:attribute ref='tns:TIPO_CONTRATTO'/>
     <xs:attribute ref='tns:FLAG_DEROGA_ADESIONE'/>
     <xs:attribute ref='tns:FLAG_USO_METODI_EDILIZIA'/>
+	<xs:attribute ref="tns:DEROGA_QUALIFICAZIONE_SA"/>
     <xs:attribute ref='tns:FLAG_ESCLUSO'/>
     <xs:attribute ref='tns:ID_ESCLUSIONE'/>
     <xs:attribute ref='tns:LUOGO_ISTAT'/>
@@ -350,6 +351,9 @@
    </xs:simpleType>
    <xs:simpleType name='MotiviCancellazioneType'>
     <xs:restriction base='xs:string'/>
+   </xs:simpleType>
+   <xs:simpleType name="DerogaQualificazioneSA">
+	<xs:restriction base="xs:string"/>
    </xs:simpleType>
    <xs:simpleType name='ArtEsclusioneType'>
     <xs:restriction base='xs:string'/>
@@ -1724,6 +1728,7 @@
    <xs:attribute name='DEN_AMM_AGENTE' type='xs:string'/>
    <xs:attribute name='DEN_AMM_AGENTE_GARA' type='xs:string'/>
    <xs:attribute name='DEN_SA' type='xs:string'/>
+   <xs:attribute name="DEROGA_QUALIFICAZIONE_SA" type="tns:DerogaQualificazioneSA"/>
    <xs:attribute name='DESCRIZIONE_INIZIATIVA_I' type='xs:string'/>
    <xs:attribute name='DESCRIZIONE_SOGG_AGG_I' type='xs:string'/>
    <xs:attribute name='DURATA_ACCQUADRO_CONVENZIONE' type='tns:InteroType'/>
