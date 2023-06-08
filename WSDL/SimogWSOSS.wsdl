@@ -305,6 +305,9 @@
    <xs:simpleType name='SceltaContraenteType'>
     <xs:restriction base='xs:string'/>
    </xs:simpleType>
+   <xs:simpleType name="DerogaQualificazioneSA">
+	<xs:restriction base="xs:string"/>
+   </xs:simpleType>
    <xs:simpleType name='ArtEsclusioneType'>
     <xs:restriction base='xs:string'/>
    </xs:simpleType>
