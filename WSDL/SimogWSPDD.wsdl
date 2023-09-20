@@ -66,6 +66,8 @@
    <xs:element name='loginRPNT' type='tns:loginRPNT'/>
    <xs:element name='loginRPNTResponse' type='tns:loginRPNTResponse'/>
    <xs:element name='loginResponse' type='tns:loginResponse'/>
+   <xs:element name='modificaDatiPerfezionamento' type='tns:modificaDatiPerfezionamento'/>
+   <xs:element name='modificaDatiPerfezionamentoResponse' type='tns:modificaDatiPerfezionamentoResponse'/>
    <xs:element name='modificaGara' type='tns:modificaGara'/>
    <xs:element name='modificaGaraResponse' type='tns:modificaGaraResponse'/>
    <xs:element name='modificaLotto' type='tns:modificaLotto'/>
@@ -113,6 +115,28 @@
      <xs:element minOccurs='0' name='ufficio_denominazione' type='xs:string'/>
      <xs:element minOccurs='0' name='ufficio_id' type='xs:string'/>
      <xs:element minOccurs='0' name='ufficio_profilo' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='modificaDatiPerfezionamento'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='ticket' type='xs:string'/>
+     <xs:element minOccurs='0' name='indexCollaborazione' type='xs:string'/>
+     <xs:element minOccurs='0' name='cig' type='xs:string'/>
+     <xs:element minOccurs='0' name='DATA_SCADENZA_OFFERTE' type='xs:string'/>
+     <xs:element minOccurs='0' name='ORA_SCADENZA_OFFERTE' type='xs:string'/>
+     <xs:element minOccurs='0' name='DATA_SCADENZA_RIC_INVITO' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='modificaDatiPerfezionamentoResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:ResponseModificaDatiPerfezionamento'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ResponseModificaDatiPerfezionamento'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='messaggio' type='xs:string'/>
+     <xs:element name='success' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='error' type='xs:string'/>
     </xs:sequence>
    </xs:complexType>
    <xs:complexType name='integraPariOpportunita'>
@@ -247,7 +271,7 @@
     <xs:attribute ref='tns:TIPO_CONTRATTO'/>
     <xs:attribute ref='tns:FLAG_DEROGA_ADESIONE'/>
     <xs:attribute ref='tns:FLAG_USO_METODI_EDILIZIA'/>
-	<xs:attribute ref="tns:DEROGA_QUALIFICAZIONE_SA"/>
+    <xs:attribute ref='tns:DEROGA_QUALIFICAZIONE_SA'/>
     <xs:attribute ref='tns:FLAG_ESCLUSO'/>
     <xs:attribute ref='tns:ID_ESCLUSIONE'/>
     <xs:attribute ref='tns:LUOGO_ISTAT'/>
@@ -352,8 +376,8 @@
    <xs:simpleType name='MotiviCancellazioneType'>
     <xs:restriction base='xs:string'/>
    </xs:simpleType>
-   <xs:simpleType name="DerogaQualificazioneSA">
-	<xs:restriction base="xs:string"/>
+   <xs:simpleType name='DerogaQualificazioneSA'>
+    <xs:restriction base='xs:string'/>
    </xs:simpleType>
    <xs:simpleType name='ArtEsclusioneType'>
     <xs:restriction base='xs:string'/>
@@ -1728,7 +1752,7 @@
    <xs:attribute name='DEN_AMM_AGENTE' type='xs:string'/>
    <xs:attribute name='DEN_AMM_AGENTE_GARA' type='xs:string'/>
    <xs:attribute name='DEN_SA' type='xs:string'/>
-   <xs:attribute name="DEROGA_QUALIFICAZIONE_SA" type="tns:DerogaQualificazioneSA"/>
+   <xs:attribute name='DEROGA_QUALIFICAZIONE_SA' type='tns:DerogaQualificazioneSA'/>
    <xs:attribute name='DESCRIZIONE_INIZIATIVA_I' type='xs:string'/>
    <xs:attribute name='DESCRIZIONE_SOGG_AGG_I' type='xs:string'/>
    <xs:attribute name='DURATA_ACCQUADRO_CONVENZIONE' type='tns:InteroType'/>
@@ -1989,6 +2013,9 @@
  <message name='SimogWSPDD_inserisciGara'>
   <part element='tns:inserisciGara' name='inserisciGara'></part>
  </message>
+ <message name='SimogWSPDD_modificaDatiPerfezionamentoResponse'>
+  <part element='tns:modificaDatiPerfezionamentoResponse' name='modificaDatiPerfezionamentoResponse'></part>
+ </message>
  <message name='SimogWSPDD_inserisciGaraResponse'>
   <part element='tns:inserisciGaraResponse' name='inserisciGaraResponse'></part>
  </message>
@@ -2030,6 +2057,9 @@
  </message>
  <message name='SimogWSPDD_presaInCarico'>
   <part element='tns:presaInCarico' name='presaInCarico'></part>
+ </message>
+ <message name='SimogWSPDD_modificaDatiPerfezionamento'>
+  <part element='tns:modificaDatiPerfezionamento' name='modificaDatiPerfezionamento'></part>
  </message>
  <message name='SimogWSPDD_consultaNumeroGara'>
   <part element='tns:consultaNumeroGara' name='consultaNumeroGara'></part>
@@ -2150,6 +2180,10 @@
   <operation name='loginRPNT' parameterOrder='loginRPNT'>
    <input message='tns:SimogWSPDD_loginRPNT'></input>
    <output message='tns:SimogWSPDD_loginRPNTResponse'></output>
+  </operation>
+  <operation name='modificaDatiPerfezionamento' parameterOrder='modificaDatiPerfezionamento'>
+   <input message='tns:SimogWSPDD_modificaDatiPerfezionamento'></input>
+   <output message='tns:SimogWSPDD_modificaDatiPerfezionamentoResponse'></output>
   </operation>
   <operation name='modificaGara' parameterOrder='modificaGara'>
    <input message='tns:SimogWSPDD_modificaGara'></input>
@@ -2300,6 +2334,15 @@
    </output>
   </operation>
   <operation name='loginRPNT'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='modificaDatiPerfezionamento'>
    <soap:operation soapAction=''/>
    <input>
     <soap:body use='literal'/>
