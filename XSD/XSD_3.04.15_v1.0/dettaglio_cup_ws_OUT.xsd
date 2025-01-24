@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="DETTAGLIO_CUP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CODICE_CUP"/>
+				<xs:element ref="DATI_GENERALI_PROGETTO"/>
+				<xs:element ref="MASTER"/>
+				<xs:element minOccurs="0" ref="PROGETTAZIONE"/>
+				<xs:element minOccurs="0" ref="LAVORI"/>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element ref="LOCALIZZAZIONE"/>
+				</xs:choice>
+				<xs:element ref="DESCRIZIONE"/>
+				<xs:element ref="ATTIV_ECONOMICA_BENEFICIARIO_ATECO_2002" minOccurs="0"/>
+				<xs:element ref="ATTIV_ECONOMICA_BENEFICIARIO_ATECO_2007" minOccurs="0"/>				
+				<xs:choice minOccurs="0">
+					<xs:element ref="FINANZIAMENTO"/>
+				</xs:choice>
+				<xs:element ref="DATI_TITOLARE_RICHIEDENTE"/>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element ref="INDICATORE"/>
+				</xs:choice>
+				<xs:choice  minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="TAG"/>
+				</xs:choice>
+				<xs:choice  minOccurs="0" maxOccurs="20">
+					<xs:element ref="PROGRAMMATICI"/>
+				</xs:choice>
+				<xs:choice  minOccurs="0" maxOccurs="10">
+					<xs:element ref="NORMA"/>
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="10">
+					<xs:element ref="INDICATORE_PNRR"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATI_GENERALI_PROGETTO">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="codice_progetto" type="xs:string" use="required"/>
+					<xs:attribute name="codice_cup" type="xs:string" use="required"/>
+					<xs:attribute name="codice_cup_provvisorio" type="xs:string"/>
+					<xs:attribute name="anno_decisione" type="xs:string" use="required"/>
+					<xs:attribute name="cumulativo" type="xs:string"/>
+					<xs:attribute name="codifica_locale" type="xs:string"/>
+					<xs:attribute name="id_natura" type="xs:string" use="required"/>
+					<xs:attribute name="natura" type="xs:string" use="required"/>
+					<xs:attribute name="id_tipologia" type="xs:string" use="required"/>
+					<xs:attribute name="tipologia" type="xs:string" use="required"/>
+					<xs:attribute name="id_settore" type="xs:string" use="required"/>
+					<xs:attribute name="settore" type="xs:string" use="required"/>
+					<xs:attribute name="id_sottosettore" type="xs:string" use="required"/>
+					<xs:attribute name="sottosettore" type="xs:string" use="required"/>
+					<xs:attribute name="id_categoria" type="xs:string" use="required"/>
+					<xs:attribute name="categoria" type="xs:string" use="required"/>
+					<xs:attribute name="cod_cpv1" type="xs:string"/>
+					<xs:attribute name="cpv1" type="xs:string"/>
+					<xs:attribute name="cod_cpv2" type="xs:string"/>
+					<xs:attribute name="cpv2" type="xs:string"/>
+					<xs:attribute name="cod_cpv3" type="xs:string"/>
+					<xs:attribute name="cpv3" type="xs:string"/>
+					<xs:attribute name="cod_cpv4" type="xs:string"/>
+					<xs:attribute name="cpv4" type="xs:string"/>
+					<xs:attribute name="cod_cpv5" type="xs:string"/>
+					<xs:attribute name="cpv5" type="xs:string"/>
+					<xs:attribute name="cod_cpv6" type="xs:string"/>
+					<xs:attribute name="cpv6" type="xs:string"/>
+					<xs:attribute name="cod_cpv7" type="xs:string"/>
+					<xs:attribute name="cpv7" type="xs:string"/>
+					<xs:attribute name="stato" type="xs:string"/>
+					<xs:attribute name="provvisorio" type="xs:string"/>
+					<xs:attribute name="pubblico" type="xs:string"/>
+					<xs:attribute name="tipo" type="xs:string"/>
+					<xs:attribute name="data_generazione" type="xs:string" use="required"/>
+					<xs:attribute name="utente_generatore_provvisorio" type="xs:string"/>
+					<xs:attribute name="utente_generatore_completo" type="xs:string"/>
+					<xs:attribute name="utente_riferimento" type="xs:string"/>
+					<xs:attribute name="data_generazione_completo" type="xs:string"/>
+					<xs:attribute name="data_generazione_provvisorio" type="xs:string"/>
+					<xs:attribute name="utente_ultima_modifica" type="xs:string"/>
+					<xs:attribute name="data_ultima_modifica" type="xs:string" use="required"/>
+					<xs:attribute name="utente_ultima_modifica_utente" type="xs:string"/>
+					<xs:attribute name="data_ultima_modifica_utente" type="xs:string"/>
+					<xs:attribute name="data_ultima_modifica_ssc" type="xs:string"/>
+					<xs:attribute name="fase" type="xs:string"/>
+					<xs:attribute name="cup_in_relazione" type="xs:string"/>
+					<xs:attribute name="ruolo_cup_in_relazione" type="xs:string"/>
+					<xs:attribute name="tipo_relazione" type="xs:string"/>
+					<xs:attribute name="note_relazione" type="xs:string"/>
+					<xs:attribute name="data_chiusura_prevista" type="xs:string"/>
+					<xs:attribute name="cod_template" type="xs:string"/>
+					<xs:attribute name="desc_template" type="xs:string"/>
+					<xs:attribute name="tematica" type="xs:string"/>
+					<xs:attribute name="desc_tematica" type="xs:string"/>
+					<xs:attribute name="sub_investimento" type="xs:string"/>
+					<xs:attribute name="desc_sub_investimento" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATI_TITOLARE_RICHIEDENTE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="id_soggetto_titolare" type="xs:string"/>
+					<xs:attribute name="concentratore" type="xs:string"/>
+					<xs:attribute name="soggetto_titolare" type="xs:string"/>
+					<xs:attribute name="id_uo_soggetto_titolare" type="xs:string"/>
+					<xs:attribute name="uo_soggetto_titolare" type="xs:string"/>
+					<xs:attribute name="user_titolare" type="xs:string"/>
+					<xs:attribute name="id_soggetto_richiedente" type="xs:string" use="required"/>
+					<xs:attribute name="soggetto_richiedente" type="xs:string" use="required"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ATTIV_ECONOMICA_BENEFICIARIO_ATECO_2002">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cod_sezione" type="xs:string"/>
+					<xs:attribute name="sezione" type="xs:string"/>
+					<xs:attribute name="cod_sottosezione" type="xs:string"/>
+					<xs:attribute name="sottosezione" type="xs:string"/>
+					<xs:attribute name="cod_divisione" type="xs:string"/>
+					<xs:attribute name="divisione" type="xs:string"/>
+					<xs:attribute name="cod_gruppo" type="xs:string"/>
+					<xs:attribute name="gruppo" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ATTIV_ECONOMICA_BENEFICIARIO_ATECO_2007">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cod_sezione" type="xs:string"/>		
+					<xs:attribute name="sezione" type="xs:string"/>				
+					<xs:attribute name="cod_divisione" type="xs:string"/>				
+					<xs:attribute name="divisione" type="xs:string"/>
+					<xs:attribute name="cod_gruppo" type="xs:string"/>
+					<xs:attribute name="gruppo" type="xs:string"/>
+					<xs:attribute name="cod_classe" type="xs:string"/>
+					<xs:attribute name="classe" type="xs:string"/>
+					<xs:attribute name="cod_categoria" type="xs:string"/>
+					<xs:attribute name="categoria" type="xs:string"/>
+					<xs:attribute name="cod_sottocategoria" type="xs:string"/>
+					<xs:attribute name="sottocategoria" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="FINANZIAMENTO">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="CODICE_TIPOLOGIA_COP_FINANZ"/>
+				<xs:element ref="DESCRIZIONE_TIPOLOGIA_COP_FINANZ"/>
+			</xs:sequence>
+			<xs:attribute name="sponsorizzazione" type="xs:string"/>
+			<xs:attribute name="finanza_progetto" type="xs:string"/>
+			<xs:attribute name="codi_partenariato" type="xs:string"/>
+			<xs:attribute name="desc_partenariato" type="xs:string"/>
+			<xs:attribute name="codi_tipologia" type="xs:string"/>
+			<xs:attribute name="desc_tipologia" type="xs:string"/>
+			<xs:attribute name="altra_tipologia" type="xs:string"/>
+			<xs:attribute name="costo" type="xs:string" use="required"/>
+			<xs:attribute name="finanziamento" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CODICE_TIPOLOGIA_COP_FINANZ">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LOCALIZZAZIONE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="stato" type="xs:string" use="required"/>
+					<xs:attribute name="desc_stato" type="xs:string"/>
+					<xs:attribute name="regione" type="xs:string" use="required"/>
+					<xs:attribute name="desc_regione" type="xs:string"/>
+					<xs:attribute name="provincia" type="xs:string" use="required"/>
+					<xs:attribute name="desc_provincia" type="xs:string"/>
+					<xs:attribute name="comune" type="xs:string" use="required"/>
+					<xs:attribute name="desc_comune" type="xs:string"/>
+					<xs:attribute name="codice" type="xs:string" use="required"/>
+					<xs:attribute name="descrizione" type="xs:string" use="required"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MASTER">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cup_master" type="xs:string"/>
+					<xs:attribute name="ragioni_collegamento" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PROGETTAZIONE">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:sequence>
+	            	<xs:element ref="CUP_PROGETTAZIONE" minOccurs="0" maxOccurs="unbounded"/>
+	        	</xs:sequence>
+	        	<xs:sequence>
+		        	<xs:element name="CODI_PROG_INESISTENTE" type="xs:string"/>
+		        	<xs:element name="DESC_PROG_INESISTENTE" type="xs:string"/>
+		        </xs:sequence>
+        	</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LAVORI">
+		<xs:complexType>
+			<xs:sequence>
+	           	<xs:element ref="CUP_LAVORO" minOccurs="0" maxOccurs="unbounded"/>
+	       	</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CUP_PROGETTAZIONE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cup_progettazione" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CUP_LAVORO">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cup_lavoro" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DESCRIZIONE">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="LAVORI_PUBBLICI"/>
+				<xs:element ref="CONCESSIONE_INCENTIVI_UNITA_PRODUTTIVE"/>
+				<xs:element ref="REALIZZ_ACQUISTO_SERVIZI_RICERCA"/>
+				<xs:element ref="REALIZZ_ACQUISTO_SERVIZI_FORMAZIONE"/>
+				<xs:element ref="REALIZZ_ACQUISTO_SERVIZI_NO_FORMAZIONE_RICERCA"/>
+				<xs:element ref="ACQUISTO_BENI"/>
+				<xs:element ref="PARTECIP_AZIONARIE_CONFERIM_CAPITALE"/>
+				<xs:element ref="CONCESSIONE_CONTRIBUTI_NO_UNITA_PRODUTTIVE"/>
+				<xs:element ref="CUP_CUMULATIVO"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CUP_CUMULATIVO">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="atto_amministr" type="xs:string"/>
+					<xs:attribute name="scopo_intervento" type="xs:string"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ACQUISTO_BENI">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="nome_str_infrastr" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="bene" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LAVORI_PUBBLICI">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="nome_str_infrastr" type="xs:string"/>
+					<xs:attribute name="str_infrastr_unica">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="SI"/>
+								<xs:enumeration value="NO"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="descrizione_intervento" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CONCESSIONE_INCENTIVI_UNITA_PRODUTTIVE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="denominazione_impresa_stabilimento" type="xs:string"/>
+					<xs:attribute name="partita_iva" type="xs:string"/>
+					<xs:attribute name="denominazione_impresa_stabilimento_prec" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="descrizione_intervento" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CONCESSIONE_CONTRIBUTI_NO_UNITA_PRODUTTIVE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="beneficiario" type="xs:string"/>
+					<xs:attribute name="partita_iva" type="xs:string"/>
+					<xs:attribute name="struttura" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="desc_intervento" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PARTECIP_AZIONARIE_CONFERIM_CAPITALE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="ragione_sociale" type="xs:string"/>
+					<xs:attribute name="partita_iva" type="xs:string"/>
+					<xs:attribute name="ragione_sociale_prec" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="finalita" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="REALIZZ_ACQUISTO_SERVIZI_FORMAZIONE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="denom_progetto" type="xs:string"/>
+					<xs:attribute name="denom_ente_corso" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="obiett_corso" type="xs:string"/>
+					<xs:attribute name="mod_intervento_frequenza" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="REALIZZ_ACQUISTO_SERVIZI_NO_FORMAZIONE_RICERCA">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="nome_str_infrastr" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="servizio" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="REALIZZ_ACQUISTO_SERVIZI_RICERCA">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="denominazione_progetto" type="xs:string"/>
+					<xs:attribute name="ente" type="xs:string"/>
+					<xs:attribute name="tipo_ind_area_rifer">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Viale"/>
+								<xs:enumeration value="Piazza"/>
+								<xs:enumeration value="Via"/>
+								<xs:enumeration value="Altro"/>
+								<xs:enumeration value="Corso"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ind_area_rifer" type="xs:string"/>
+					<xs:attribute name="descrizione_intervento" type="xs:string"/>
+					<xs:attribute name="id_strum_progr" type="xs:string"/>
+					<xs:attribute name="strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_strum_progr" type="xs:string"/>
+					<xs:attribute name="desc_sintetica" type="xs:string" use="required"/>
+					<xs:attribute name="altre_informazioni" type="xs:string"/>
+					<xs:attribute name="flagLeggeObiettivo"	type="xs:string"/>
+					<xs:attribute name="numDeliberaCipe" type="xs:string"/>
+					<xs:attribute name="annoDelibera" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CODICE_CUP">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DESCRIZIONE_TIPOLOGIA_COP_FINANZ">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded"/>
+		</xs:complexType>
+	</xs:element>
+ 	<xs:element name="INDICATORE">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="codIndicatore" type="xs:string" use="required"/>
+					<xs:attribute name="descIndicatore" type="xs:string" use="required"/>
+					<xs:attribute name="codTipologiaIndicatore" type="xs:int" use="required"/>
+					<xs:attribute name="descTipologiaIndicatore" type="xs:string" use="required"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TAG">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="nome" type="xs:string"/>
+					<xs:attribute name="soggetto_origine" type="xs:string"/>
+					<xs:attribute name="uo_origine" type="xs:string"/>
+					<xs:attribute name="descrizione" type="xs:string"/>
+					<xs:attribute name="data_scadenza" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="PROGRAMMATICI">
+		<xs:complexType>
+			<xs:sequence>		
+				<xs:element name="SOGGETTO_TITOLARE_PROGRAMMATICO" type="xs:string" />
+				<xs:element name="CODICE_PROGRAMMATICO"  type="xs:string"/>
+				<xs:element name="DESCRIZIONE_PROGRAMMATICO"  type="xs:string"/>																
+				<xs:element ref="DOCUMENTO_PROGRAMMAZIONE"/>									
+				<xs:element name="ANNO_PROGRAMMATICO"  type="xs:string"/>
+				<xs:element name="CODICE_LOCALE_PROGRAMMATICO"  type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="SOGGETTO_RESPONSABILE_REALIZZAZIONE"  type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="NATURA_INTERVENTO"  type="xs:string"/>
+				<xs:element name="SETTORE_INTERVENTO" type="xs:string" />
+				<xs:element name="SOTTOSETTORE_INTERVENTO"  type="xs:string"/>
+				<xs:element name="COSTO_STIMATO_TOTALE"  type="xs:long"/>
+				<xs:element name="NOTE_PUBBLICHE" type="xs:string" nillable="true" minOccurs="0"/>
+			</xs:sequence>					
+		</xs:complexType>
+	</xs:element>	
+	 <xs:element name="DOCUMENTO_PROGRAMMAZIONE"  nillable="false" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SIGLA_DOC_PROG" type="xs:string" maxOccurs="1" minOccurs="1" nillable="false" />
+				<xs:element name="DESC_DOC_PROG" type="xs:string" maxOccurs="1" minOccurs="1" nillable="false" />
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+	<xs:element name="NORMA">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="id_norma" type="xs:integer" use="required"/>
+					<xs:attribute name="tipo_norma" type="xs:string" />
+					<xs:attribute name="descrizione" type="xs:string"/>
+					<xs:attribute name="numero_norma" type="xs:string" />
+					<xs:attribute name="anno_norma" type="xs:integer"/>
+					<xs:attribute name="articolo" type="xs:string"/>
+					<xs:attribute name="articolo_comma" type="xs:string"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="INDICATORE_PNRR">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:restriction base="xs:anyType">
+					<xs:attribute name="cod_indicatore_pnrr" type="xs:string" use="required"/>
+					<xs:attribute name="desc_indicatore_pnrr" type="xs:string" use="required"/>
+					<xs:attribute name="valore_indicatore_pnrr" type="xs:string" use="required"/>
+					<xs:attribute name="data_indicatore_pnrr" type="xs:string" use="required"/>
+					<xs:attribute name="unita_mis_indicatore_pnrr" type="xs:string" use="required"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

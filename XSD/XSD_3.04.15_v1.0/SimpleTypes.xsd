@@ -288,7 +288,8 @@
 		 <xsd:enumeration value="17"/>
 		 <xsd:enumeration value="18"/>
 		 <xsd:enumeration value="19"/>
-		 <xsd:enumeration value="20"/>		 
+		 <xsd:enumeration value="20"/>
+		 <xsd:enumeration value="21"/>
       </xsd:restriction>
    </xsd:simpleType> 
 </xsd:schema>
